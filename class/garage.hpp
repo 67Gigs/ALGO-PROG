@@ -5,12 +5,11 @@
 #include "bien.hpp"
 
 
-class garage : public bien {
+class garage : protected bien {
 private:
-    int nbPlaces;
+    int numPlace;
     bool ferme;
     bool alarme;
-    bool box;
 public:
     garage();
     garage(std::string adresse, int surface, int loyer, int nbPlaces, bool ferme, bool alarme, bool box);

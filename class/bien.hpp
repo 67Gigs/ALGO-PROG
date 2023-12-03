@@ -4,7 +4,7 @@
 #include <string>
 
 class bien {
-private:
+protected:
     std::string adresse;
     int surface; // en m²
     double prix; // en €

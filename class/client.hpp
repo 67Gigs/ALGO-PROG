@@ -25,6 +25,26 @@ public:
     client();
     client(std::string nom, std::string prenom, std::string civilite, std::string email, std::string telephone);
 
+    // getters et setters
+    std::string getNom();
+    std::string getPrenom();
+    std::string getCivilite();
+    std::string getEmail();
+    std::string getTelephone();
+    void setNom(std::string nom);
+    void setPrenom(std::string prenom);
+    void setCivilite(std::string civilite);
+    void setEmail(std::string email);
+    void setTelephone(std::string telephone);
+
+    // methodes
+    void addMaison(maison maison);
+    void addAppartement(appartement appartement);
+    void addGarage(garage garage);
+    void removeMaison(maison maison);
+    void removeAppartement(appartement appartement);
+    void removeGarage(garage garage);
+    void afficherBiens();
 };
 
 
