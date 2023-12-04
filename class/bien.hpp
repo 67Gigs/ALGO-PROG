@@ -13,8 +13,11 @@ public:
     bien(std::string adresse, int surface, int loyer);
     std::string getAdresse();
     int getSurface();
+    double getPrix();
     void setAdresse(std::string adresse);
     void setSurface(int surface);
+    void setPrix(double prix);
+    virtual void affiche();
 };
 
 #endif
