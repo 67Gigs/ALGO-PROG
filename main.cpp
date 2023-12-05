@@ -14,8 +14,9 @@ int main() {
     std::vector<bien*> biens;
 
     std::ifstream InputFile("./files/data.dat", std::ios::binary);
-    std::ofstream OutputFile("./files/data.dat", std::ios::binary);
+    std::ofstream OutputFile("./files/data.dat", std::ios::binary | std::ios::app);
     
+
     if (!InputFile || !OutputFile) {
         std::cout << "Erreur lors de l'ouverture du fichier" << std::endl;
         return 1;
@@ -24,14 +25,23 @@ int main() {
 
     // Création d'un bien
     bien* b1 = new bien();
-    OutputFile.write((char*)b1, sizeof(bien));
-    OutputFile.write((char*)b1, sizeof(bien));
-    OutputFile.write((char*)b1, sizeof(bien));
 
-    for (int i = 0; i < 3; i++) {
+    // ecriture dans le fichier binaire
+
+    // OutputFile.seekp(0, std::ios::end);
+    // OutputFile.write((char*)b1, sizeof(bien));
+    // OutputFile.write((char*)b1, sizeof(bien));
+    // OutputFile.write((char*)b1, sizeof(bien));
+    OutputFile.close();
+
+    // Lecture du fichier jusqu'à la fin
+    while (!InputFile.eof()) {
         bien* b = new bien();
-        InputFile.read((char*)b, sizeof(bien));
-        biens.push_back(b);
+        if (InputFile.read((char*)b, sizeof(bien))) {
+            biens.push_back(b);
+        }
+        
+
     }
 
     for (int i = 0; i < biens.size(); i++) {
@@ -41,6 +51,6 @@ int main() {
     }
 
 
-    
+    InputFile.close();
     return 0;
 }

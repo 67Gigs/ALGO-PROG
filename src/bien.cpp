@@ -4,6 +4,7 @@
 #include <iostream>
 
 
+
 bien::bien() {
     adresse = "";
     surface = 0;
@@ -63,7 +64,7 @@ void bien::setPrix(double _prix) {
 }
 
 void bien::affiche() {
-    std::cout << "Adresse : " << adresse << std::endl;
-    std::cout << "Surface : " << surface << " m2" << std::endl;
-    std::cout << "Loyer : " << prix << " euro" << std::endl;
+    std::cout << "Adresse : " << getAdresse() << std::endl;
+    std::cout << "Surface : " << getSurface() << " m2" << std::endl;
+    std::cout << "Loyer : " << getPrix() << " euro" << std::endl;
 }
