@@ -3,17 +3,23 @@
 #include <string>
 #include <iostream>
 
+unsigned int bien::uniqueID = 0;
 
 
+// Constructeurs
 bien::bien() {
+    id = ++uniqueID;
     adresse = "";
     surface = 0;
     prix = 0;
 }
 
 bien::bien(std::string _adresse, int _surface=0, int _loyer=0) {
-    
+    id = ++uniqueID;
+
     adresse = _adresse;
+
+    std::cout << "addresse : " << adresse << std::endl;
     
     if (_surface < 0) {
         std::cout << "La surface ne peut pas être négative" << std::endl;
@@ -27,6 +33,11 @@ bien::bien(std::string _adresse, int _surface=0, int _loyer=0) {
     }
 }
 
+// Destructeur
+bien::~bien() {}
+
+// Getters
+
 std::string bien::getAdresse() {
     return adresse;
 }
@@ -38,6 +49,12 @@ int bien::getSurface() {
 double bien::getPrix() {
     return prix;
 }
+
+unsigned int bien::getId() {
+    return id;
+}
+
+// Setters
 
 void bien::setAdresse(std::string _adresse) {
     if (_adresse == "") {
@@ -62,6 +79,9 @@ void bien::setPrix(double _prix) {
         prix = _prix;
     }
 }
+
+
+// Fonctions membres
 
 void bien::affiche() {
     std::cout << "Adresse : " << getAdresse() << std::endl;
