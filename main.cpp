@@ -6,87 +6,77 @@
 #include "src/bien.cpp"
 #include "src/maison.cpp"
 #include "src/appartement.cpp"
+#include "nlohmann/json.hpp"
+
+
+using json = nlohmann::json;
 
 
 int main() {
     
-    // Création d'un vecteur de biens
+    std::ifstream inputFile("./files/data.json");
+    // std::ofstream outputFile("./files/data.json", std::ios::out | std::ios::trunc);
+    
+    // std::vector<bien*> biens;
+    json jsonData;
 
+    if (!inputFile.is_open()) {
+        std::cout << "Erreur lors de l'ouverture du fichier" << std::endl;
+        return 1;
+    } else {
 
-    bien* b1 = new bien("1 rue de la paix", 100, 1000);
-    bien* b2 = new bien("2 rue de la paix", 200, 2000);
-    bien* b3 = new bien("3 rue de la paix", 300, 3000);
+        // read the file into the json object
 
-    // std::cout << "Bien 1  " << b1->getId() << std::endl;
-    // std::cout << "Bien 2  " << b2->getId() << std::endl;
-    // std::cout << "Bien 3  " << b3->getId() << std::endl;
+        jsonData = json::parse(inputFile);
+        inputFile.close();
+
+    }
+
 
     std::vector<bien*> biens;
 
+    std::cout << jsonData << std::endl;
 
-    // Ouverture du fichier en lecture et écriture
-    std::ifstream InputFile("./files/data.dat", std::ios::binary);
-    std::ofstream OutputFile("./files/data.dat", std::ios::binary | std::ios::app);
-
-    // Vérification de l'ouverture du fichier
-    if (!InputFile || !OutputFile) {
-        std::cout << "Erreur lors de l'ouverture du fichier" << std::endl;
-        return 1;
-    }
-
-
-    // Création d'un bien
-    // bien* b1 = new bien();
-
-    // ecriture dans le fichier binaire
-
-    // exemples d'écriture dans le fichier
-    // OutputFile.seekp(0, std::ios::end);
-    // OutputFile.write((char*)b1, sizeof(bien));
-    // OutputFile.write((char*)b2, sizeof(bien));
-    // OutputFile.write((char*)b3, sizeof(bien));
-    OutputFile.close();
-
-
-
-
-    // lecture dans le fichier binaire et stocker dans un vecteur
-    while (!InputFile.eof()) {
-        bien* b = new bien();
-        if (InputFile.read((char*)b, sizeof(bien))) {
-            bien *b_p = new bien("", b->getSurface(), b->getPrix());
-            biens.push_back(b_p);
-            std::cout << "Bien " << b_p->getId() << " ajouté" << std::endl;
-        }
-    }
-
-
-    // affichage des biens
-    for (int i = 0; i < biens.size(); i++) {
-        std::cout << "Bien " << i << std::endl;
-        std::cout << "Adresse : " << biens[i]->getAdresse() << std::endl;
-        std::cout << "Surface : " << biens[i]->getSurface() << std::endl;
-        std::cout << "Prix : " << biens[i]->getPrix() << std::endl;
-        std::cout << "ID : " << biens[i]->getId() << std::endl;
-        std::cout << std::endl;
-
-    }
-    InputFile.close();
-
+    int j = 0;
     
-    // Réecrire dans le fichier binaire les biens du vecteur pour garder les modifications    
-    OutputFile.open("./files/data.dat", std::ios::binary | std::ios::app);
-    for (int i = 0; i < biens.size(); i++) {
-        OutputFile.write((char*)biens[i], sizeof(bien));
-    }
-    OutputFile.close();
+    for (auto& element : jsonData) {
+        bien *b;
+        
 
-    // Suppression des biens
-    for (int i = 0; i < biens.size(); i++) {
-        delete biens[i];
+        b = new bien(element[j]["adresse"], element[j]["surface"], element[j]["prix"]);
+
+        biens.push_back(b);
+
     }
 
-    std::cout << "Fin du programme" << std::endl;
+    std::cout << "test" << std::endl;
+
+
+    jsonData = json::array();
+
+    bien b1("1 rue de la paix", 100, 1000);
+
+    biens.push_back(&b1);
+
+    int i = 0;
+
+    for (auto& b : biens) {
+        jsonData[i].push_back({
+            {"id", b->getId()},
+            {"adresse", b->getAdresse()},
+            {"surface", b->getSurface()},
+            {"prix", b->getPrix()}
+        });
+        i++;
+    }
+
+
+
+    std::cout << jsonData << std::endl;
+
+    std::ofstream outputFile("./files/data.json", std::ios::out | std::ios::trunc);
+    outputFile << jsonData;
+
 
     return 0;
 }

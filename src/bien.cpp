@@ -8,7 +8,7 @@ unsigned int bien::uniqueID = 0;
 
 // Constructeurs
 bien::bien() {
-    id = ++uniqueID;
+    id = uniqueID++;
     adresse = "";
     surface = 0;
     prix = 0;
@@ -19,7 +19,6 @@ bien::bien(std::string _adresse, int _surface=0, int _loyer=0) {
 
     adresse = _adresse;
 
-    std::cout << "addresse : " << adresse << std::endl;
     
     if (_surface < 0) {
         std::cout << "La surface ne peut pas être négative" << std::endl;
