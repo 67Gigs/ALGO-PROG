@@ -17,7 +17,7 @@ maison::maison() {
 }
 
 maison::maison(int _nbPieces, bool _garage, bool _jardin, bool _piscine, bool _cave) {
-    id = ++uniqueID;
+    id = uniqueID++;
 
     nbPieces = _nbPieces;
     garage = _garage;
@@ -53,10 +53,6 @@ bool maison::getCave() {
     return cave;
 }
 
-unsigned int maison::getId() {
-    return id;
-}
-
 void maison::setNbPieces(int _nbPieces) {
     nbPieces = _nbPieces;
 }
@@ -79,11 +75,11 @@ void maison::setCave(bool _cave) {
 
 // Methodes
 
-// void maison::affiche() {
-//     std::cout << "Maison " << id << " : " << std::endl;
-//     std::cout << "Nombre de pieces : " << nbPieces << std::endl;
-//     std::cout << "Garage : " << garage << std::endl;
-//     std::cout << "Jardin : " << jardin << std::endl;
-//     std::cout << "Piscine : " << piscine << std::endl;
-//     std::cout << "Cave : " << cave << std::endl;
-// }
+void maison::affiche() {
+    std::cout << "Maison " << id << " : " << std::endl;
+    std::cout << "Nombre de pieces : " << nbPieces << std::endl;
+    std::cout << "Garage : " << garage << std::endl;
+    std::cout << "Jardin : " << jardin << std::endl;
+    std::cout << "Piscine : " << piscine << std::endl;
+    std::cout << "Cave : " << cave << std::endl;
+}

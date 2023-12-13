@@ -2,10 +2,10 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "../class/bien.hpp"
-#include "../class/maison.hpp"
 #include "../class/appartement.hpp"
+#include "../class/maison.hpp"
 #include "../class/garage.hpp"
+#include "../class/bien.hpp"
 
 
 unsigned int client::uniqueID = 0;
@@ -21,7 +21,7 @@ client::client() {
 }
 
 client::client(std::string _nom, std::string _prenom, std::string _civilite, std::string _email, std::string _telephone) {
-    id = ++uniqueID;
+    id = uniqueID++;
 
     nom = _nom;
     prenom = _prenom;
@@ -150,7 +150,7 @@ void client::afficherBiens() {
     }
     std::cout << "Appartements :" << std::endl;
     for (int i = 0; i < appartements.size(); i++) {
-        std::cout << "    " << appartements[i].getAdresse() << std::endl;
+        std::cout << "    " << appartements[i].getAdresse() << appartements[i].getPrix() << std::endl;
     }
     std::cout << "Garages :" << std::endl;
     for (int i = 0; i < garages.size(); i++) {

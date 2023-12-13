@@ -15,7 +15,7 @@ bien::bien() {
 }
 
 bien::bien(std::string _adresse, int _surface=0, int _loyer=0) {
-    id = ++uniqueID;
+    id = uniqueID++;
 
     adresse = _adresse;
 

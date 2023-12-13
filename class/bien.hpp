@@ -10,6 +10,7 @@ protected:
     std::string adresse;
     int surface; // en m²
     double prix; // en €
+    
 public:
     // Constructeurs
     bien();

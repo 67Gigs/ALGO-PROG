@@ -7,7 +7,7 @@ unsigned int garage::uniqueID = 0;
 
 // Constructeurs
 garage::garage() {
-    id = ++uniqueID;
+    id = uniqueID++;
     adresse = "";
     surface = 0;
     prix = 0;
@@ -18,7 +18,7 @@ garage::garage() {
 }
 
 garage::garage(std::string _adresse, int _surface, int _prix, int _numPlace, bool _ferme, bool _alarme, bool _box) {
-    id = ++uniqueID;
+    id = uniqueID++;
     adresse = _adresse;
     surface = _surface;
     prix = _prix;
@@ -26,6 +26,9 @@ garage::garage(std::string _adresse, int _surface, int _prix, int _numPlace, boo
     ferme = _ferme;
     alarme = _alarme;
 }
+
+// Destructeur
+garage::~garage() {}
 
 
 // Getters
@@ -44,10 +47,6 @@ bool garage::getAlarme() {
 
 bool garage::getBox() {
     return box;
-}
-
-unsigned int garage::getId() {
-    return id;
 }
 
 // Setters

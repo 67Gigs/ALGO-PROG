@@ -7,7 +7,7 @@ unsigned int appartement::uniqueID = 0;
 
 // Constructeurs
 appartement::appartement() {
-    id = ++uniqueID;
+    id = uniqueID++;
     numAppartement = 0;
     adresse = "";
     surface = 0;
@@ -16,12 +16,11 @@ appartement::appartement() {
     numEtage = 0;
     ascenseur = false;
     balcon = false;
-    cave = false;
     garage = false;
 }
 
-appartement::appartement(std::string _adresse, int _surface, double _prix, int _nbPieces, int _numEtage, int _numAppartement, bool _ascenseur, bool _balcon, bool _cave, bool _garage) {
-    id = ++uniqueID;
+appartement::appartement(std::string _adresse, int _surface, double _prix, int _nbPieces, int _numEtage, int _numAppartement, bool _ascenseur, bool _balcon, bool _garage) {
+    id = uniqueID++;
 
     adresse = _adresse;
     surface = _surface;
@@ -30,9 +29,12 @@ appartement::appartement(std::string _adresse, int _surface, double _prix, int _
     numEtage = _numEtage;
     ascenseur = _ascenseur;
     balcon = _balcon;
-    cave = _cave;
     garage = _garage;
 }
+
+// Destructeur
+
+appartement::~appartement() {}
 
 // Getters
 int appartement::getNbPieces() {
@@ -55,17 +57,12 @@ bool appartement::getBalcon() {
     return balcon;
 }
 
-bool appartement::getCave() {
-    return cave;
-}
-
 bool appartement::getGarage() {
     return garage;
 }
 
-
-
 // Setters
+
 
 void appartement::setNbPieces(int _nbPieces) {
     nbPieces = _nbPieces;
@@ -87,9 +84,6 @@ void appartement::setBalcon(bool _balcon) {
     balcon = _balcon;
 }
 
-void appartement::setCave(bool _cave) {
-    cave = _cave;
-}
 
 void appartement::setGarage(bool _garage) {
     garage = _garage;
@@ -106,7 +100,6 @@ void appartement::affiche() {
     std::cout << "Numéro d'appartement : " << numAppartement << std::endl;
     std::cout << "Ascenseur : " << (ascenseur ? "oui" : "non") << std::endl;
     std::cout << "Balcon : " << (balcon ? "oui" : "non") << std::endl;
-    std::cout << "Cave : " << (cave ? "oui" : "non") << std::endl;
     std::cout << "Garage : " << (garage ? "oui" : "non") << std::endl;
     std::cout << std::endl;
 }

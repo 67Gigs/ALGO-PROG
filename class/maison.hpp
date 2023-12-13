@@ -5,7 +5,8 @@
 #include <string>
 
 
-class maison : protected bien {
+
+class maison : public bien {
 private:
     int nbPieces;
     bool garage;
@@ -13,7 +14,6 @@ private:
     bool piscine;
     bool cave;
     static unsigned int uniqueID;
-    unsigned int id;
 
 public:
     // constructeurs
@@ -23,18 +23,20 @@ public:
     // destructeur
     ~maison();
 
-    // getters et setters
+    // getters
     int getNbPieces();
     bool getGarage();
     bool getJardin();
     bool getPiscine();
     bool getCave();
-    unsigned int getId();
+
+    // setters
     void setNbPieces(int nbPieces);
     void setGarage(bool garage);
     void setJardin(bool jardin);
     void setPiscine(bool piscine);
     void setCave(bool cave);
+    void affiche();
 };
 
 #endif

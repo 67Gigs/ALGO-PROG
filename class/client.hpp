@@ -31,13 +31,15 @@ public:
     // destructeur
     ~client();
 
-    // getters et setters
+    // getters
     std::string getNom();
     std::string getPrenom();
     std::string getCivilite();
     std::string getEmail();
     std::string getTelephone();
     unsigned int getId();
+
+    // setters
     void setNom(std::string nom);
     void setPrenom(std::string prenom);
     void setCivilite(std::string civilite);
@@ -51,7 +53,7 @@ public:
     void removeMaison(maison maison);
     void removeAppartement(appartement appartement);
     void removeGarage(garage garage);
-    void afficherBiens();
+    virtual void afficherBiens();
 };
 
 
