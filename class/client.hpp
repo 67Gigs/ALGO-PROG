@@ -20,10 +20,16 @@ private:
     std::vector<maison> maisons;
     std::vector<appartement> appartements;
     std::vector<garage> garages;
+    static unsigned int uniqueID;
+    unsigned int id;
 
 public:
+    // constructeurs
     client();
     client(std::string nom, std::string prenom, std::string civilite, std::string email, std::string telephone);
+
+    // destructeur
+    ~client();
 
     // getters et setters
     std::string getNom();
@@ -31,6 +37,7 @@ public:
     std::string getCivilite();
     std::string getEmail();
     std::string getTelephone();
+    unsigned int getId();
     void setNom(std::string nom);
     void setPrenom(std::string prenom);
     void setCivilite(std::string civilite);
