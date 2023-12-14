@@ -12,11 +12,11 @@ private:
     bool alarme;
     bool box;
     static unsigned int uniqueID;
+    unsigned int idClient;
 
 public:
     // constructeurs
     garage();
-    garage(std::string adresse, int surface, int loyer, int nbPlaces, bool ferme, bool alarme, bool box);
     
     // destructeur
     ~garage();
@@ -26,12 +26,14 @@ public:
     bool getFerme();
     bool getAlarme();
     bool getBox();
+    unsigned int getIdClient();
 
     // setters
     void setNbPlaces(int nbPlaces);
     void setFerme(bool ferme);
     void setAlarme(bool alarme);
     void setBox(bool box);
+    void setIdClient(unsigned int idClient);
 
     // methodes
     void affiche();

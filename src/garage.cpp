@@ -15,17 +15,9 @@ garage::garage() {
     ferme = false;
     alarme = false;
     box = false;
+    idClient = 0;
 }
 
-garage::garage(std::string _adresse, int _surface, int _prix, int _numPlace, bool _ferme, bool _alarme, bool _box) {
-    id = uniqueID++;
-    adresse = _adresse;
-    surface = _surface;
-    prix = _prix;
-    numPlace = _numPlace;
-    ferme = _ferme;
-    alarme = _alarme;
-}
 
 // Destructeur
 garage::~garage() {}
@@ -49,6 +41,10 @@ bool garage::getBox() {
     return box;
 }
 
+unsigned int garage::getIdClient() {
+    return idClient;
+}
+
 // Setters
 
 void garage::setNbPlaces(int _numPlace) {
@@ -69,6 +65,10 @@ void garage::setAlarme(bool _alarme) {
 
 void garage::setBox(bool _box) {
     box = _box;
+}
+
+void garage::setIdClient(unsigned int _idClient) {
+    idClient = _idClient;
 }
 
 void garage::affiche() {

@@ -17,19 +17,7 @@ appartement::appartement() {
     ascenseur = false;
     balcon = false;
     garage = false;
-}
-
-appartement::appartement(std::string _adresse, int _surface, double _prix, int _nbPieces, int _numEtage, int _numAppartement, bool _ascenseur, bool _balcon, bool _garage) {
-    id = uniqueID++;
-
-    adresse = _adresse;
-    surface = _surface;
-    prix = _prix;
-    nbPieces = _nbPieces;
-    numEtage = _numEtage;
-    ascenseur = _ascenseur;
-    balcon = _balcon;
-    garage = _garage;
+    idClient = 0;
 }
 
 // Destructeur
@@ -61,6 +49,10 @@ bool appartement::getGarage() {
     return garage;
 }
 
+unsigned int appartement::getIdClient() {
+    return idClient;
+}
+
 // Setters
 
 
@@ -87,6 +79,10 @@ void appartement::setBalcon(bool _balcon) {
 
 void appartement::setGarage(bool _garage) {
     garage = _garage;
+}
+
+void appartement::setIdClient(unsigned int _idClient) {
+    idClient = _idClient;
 }
 
 // Methodes

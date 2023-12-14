@@ -18,7 +18,6 @@ private:
 public:
     // constructeurs
     maison();
-    maison(int nbPieces, bool garage, bool jardin, bool piscine, bool cave);
     
     // destructeur
     ~maison();
@@ -29,6 +28,8 @@ public:
     bool getJardin();
     bool getPiscine();
     bool getCave();
+    unsigned int getId();
+    unsigned int getIdClient();
 
     // setters
     void setNbPieces(int nbPieces);
@@ -36,6 +37,7 @@ public:
     void setJardin(bool jardin);
     void setPiscine(bool piscine);
     void setCave(bool cave);
+    void setIdClient(unsigned int idClient);
     void affiche();
 };
 

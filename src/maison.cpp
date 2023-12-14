@@ -14,24 +14,14 @@ maison::maison() {
     jardin = false;
     piscine = false;
     cave = false;
-}
-
-maison::maison(int _nbPieces, bool _garage, bool _jardin, bool _piscine, bool _cave) {
-    id = uniqueID++;
-
-    nbPieces = _nbPieces;
-    garage = _garage;
-    jardin = _jardin;
-    piscine = _piscine;
-    cave = _cave;
+    idClient = 0;
 }
 
 // Destructeur
 
-maison::~maison() {
-}
+maison::~maison() {}
 
-// Getters et setters
+// Getters
 
 int maison::getNbPieces() {
     return nbPieces;
@@ -53,6 +43,16 @@ bool maison::getCave() {
     return cave;
 }
 
+unsigned int maison::getId() {
+    return id;
+}
+
+unsigned int maison::getIdClient() {
+    return idClient;
+}
+
+// Setters
+
 void maison::setNbPieces(int _nbPieces) {
     nbPieces = _nbPieces;
 }
@@ -71,6 +71,10 @@ void maison::setPiscine(bool _piscine) {
 
 void maison::setCave(bool _cave) {
     cave = _cave;
+}
+
+void maison::setIdClient(unsigned int _idClient) {
+    idClient = _idClient;
 }
 
 // Methodes

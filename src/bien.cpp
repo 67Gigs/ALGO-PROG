@@ -14,24 +14,6 @@ bien::bien() {
     prix = 0;
 }
 
-bien::bien(std::string _adresse, int _surface=0, int _loyer=0) {
-    id = uniqueID++;
-
-    adresse = _adresse;
-
-    
-    if (_surface < 0) {
-        std::cout << "La surface ne peut pas être négative" << std::endl;
-    } else {
-        surface = _surface;
-    }
-    if (_loyer < 0) {
-        std::cout << "Le loyer ne peut pas être négatif" << std::endl;
-    } else {
-        prix = _loyer;
-    }
-}
-
 // Destructeur
 bien::~bien() {}
 

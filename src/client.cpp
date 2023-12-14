@@ -2,13 +2,14 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <conio.h>
 #include "../class/appartement.hpp"
 #include "../class/maison.hpp"
 #include "../class/garage.hpp"
 #include "../class/bien.hpp"
 
 
-unsigned int client::uniqueID = 0;
+unsigned int client::uniqueID = 1;
 
 // Constructeurs
 client::client() {
@@ -20,15 +21,6 @@ client::client() {
     telephone = "";
 }
 
-client::client(std::string _nom, std::string _prenom, std::string _civilite, std::string _email, std::string _telephone) {
-    id = uniqueID++;
-
-    nom = _nom;
-    prenom = _prenom;
-    civilite = _civilite;
-    email = _email;
-    telephone = _telephone;
-}
 
 // Destructeur
 client::~client() {
@@ -102,23 +94,31 @@ void client::setTelephone(std::string _telephone) {
     }
 }
 
+void client::setId(unsigned int _id) {
+    id = _id;
+}
+
 // methodes
 void client::addMaison(maison maison) {
     maisons.push_back(maison);
+    maison.setIdClient(id);
 }
 
 void client::addAppartement(appartement appartement) {
     appartements.push_back(appartement);
+    appartement.setIdClient(id);
 }
 
 void client::addGarage(garage garage) {
     garages.push_back(garage);
+    garage.setIdClient(id);
 }
 
 void client::removeMaison(maison maison) {
     for (int i = 0; i < maisons.size(); i++) {
         if (maisons[i].getId() == maison.getId()) {
             maisons.erase(maisons.begin() + i);
+            maison.setIdClient(0);
             break;
         }
     }
@@ -128,6 +128,7 @@ void client::removeAppartement(appartement appartement) {
     for (int i = 0; i < appartements.size(); i++) {
         if (appartements[i].getId() == appartement.getId()) {
             appartements.erase(appartements.begin() + i);
+            appartement.setIdClient(0);
             break;
         }
     }
@@ -137,6 +138,7 @@ void client::removeGarage(garage garage) {
     for (int i = 0; i < garages.size(); i++) {
         if (garages[i].getId() == garage.getId()) {
             garages.erase(garages.begin() + i);
+            garage.setIdClient(0);
             break;
         }
     }
@@ -147,13 +149,20 @@ void client::afficherBiens() {
     std::cout << "Maisons :" << std::endl;
     for (int i = 0; i < maisons.size(); i++) {
         std::cout << "    " << maisons[i].getAdresse() << std::endl;
+        std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+        getch();
     }
     std::cout << "Appartements :" << std::endl;
     for (int i = 0; i < appartements.size(); i++) {
         std::cout << "    " << appartements[i].getAdresse() << appartements[i].getPrix() << std::endl;
+        std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+        getch();
     }
     std::cout << "Garages :" << std::endl;
     for (int i = 0; i < garages.size(); i++) {
         std::cout << "    " << garages[i].getAdresse() << std::endl;
+        std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+        getch();
     }
+    
 }

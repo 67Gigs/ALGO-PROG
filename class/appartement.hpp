@@ -14,11 +14,10 @@ private:
     bool balcon;
     bool ascenseur;
     static unsigned int uniqueID;
-    
+
 public:
     // Constructeurs
     appartement();
-    appartement(std::string adresse, int surface, double prix, int nbPieces, int numEtage, int numAppartement, bool ascenseur, bool balcon, bool garage);
     
     // Destructeur
     ~appartement();
@@ -28,9 +27,9 @@ public:
     int getNumAppartement();
     int getNbPieces();
     bool getGarage();
-    bool getCave();
     bool getBalcon();
     bool getAscenseur();
+    unsigned int getIdClient();
 
     // Setters
     void setNumEtage(int numEtage);
@@ -39,6 +38,7 @@ public:
     void setNbPieces(int nbPieces);
     void setGarage(bool garage);
     void setBalcon(bool balcon);
+    void setIdClient(unsigned int idClient);
 
     // methodes
     void affiche();

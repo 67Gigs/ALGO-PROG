@@ -10,11 +10,11 @@ protected:
     std::string adresse;
     int surface; // en m²
     double prix; // en €
+    unsigned int idClient;
     
 public:
     // Constructeurs
     bien();
-    bien(std::string adresse, int surface, int loyer);
 
     // Destructeur
     ~bien();

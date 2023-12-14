@@ -20,13 +20,13 @@ private:
     std::vector<maison> maisons;
     std::vector<appartement> appartements;
     std::vector<garage> garages;
-    static unsigned int uniqueID;
     unsigned int id;
 
 public:
+    static unsigned int uniqueID;
+    
     // constructeurs
     client();
-    client(std::string nom, std::string prenom, std::string civilite, std::string email, std::string telephone);
 
     // destructeur
     ~client();
@@ -45,6 +45,7 @@ public:
     void setCivilite(std::string civilite);
     void setEmail(std::string email);
     void setTelephone(std::string telephone);
+    void setId(unsigned int id);
 
     // methodes
     void addMaison(maison maison);
@@ -54,6 +55,7 @@ public:
     void removeAppartement(appartement appartement);
     void removeGarage(garage garage);
     virtual void afficherBiens();
+    
 };
 
 

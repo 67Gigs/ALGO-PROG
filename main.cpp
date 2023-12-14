@@ -3,6 +3,8 @@
 #include <vector>
 #include <fstream>
 
+#include "src/function.cpp"
+
 #include "src/bien.cpp"
 #include "src/maison.cpp"
 #include "src/appartement.cpp"
@@ -10,6 +12,8 @@
 #include "src/garage.cpp"
 
 #include "nlohmann/json.hpp"
+
+
 
 
 using json = nlohmann::json;
@@ -30,6 +34,8 @@ int main() {
     json jsonData, jsonClient, jsonMaison, jsonAppartement, jsonGarage;
     int j = 0;
     int i = 0;
+    int maxId = 0;
+    std::string choix;
 
     // lecture de fichier
 
@@ -59,8 +65,17 @@ int main() {
         cl->setCivilite(c["civilite"]);
         cl->setEmail(c["email"]);
         cl->setTelephone(c["telephone"]);
+        cl->setId(c["id"]);
         clients.push_back(cl);
     }
+
+    for (size_t i = 0; i < clients.size(); i++) {
+        if (clients[i]->getId() > maxId) {
+            maxId = clients[i]->getId();
+        }
+    }
+
+    client::uniqueID = maxId + 1;
 
     for (auto& m : jsonMaison) {
         maison *ma = new maison();
@@ -72,6 +87,15 @@ int main() {
         ma->setJardin(m["jardin"]);
         ma->setPiscine(m["piscine"]);
         ma->setCave(m["cave"]);
+        for (auto& c : clients) {
+            if (ma->getIdClient() == 0) {
+                break;
+            }
+            if (c->getId() == m["idClient"]) {
+                c->addMaison(*ma);
+                break;
+            }
+        }
         maisons.push_back(ma);
     }
 
@@ -86,6 +110,15 @@ int main() {
         ap->setAscenseur(a["ascenseur"]);
         ap->setBalcon(a["balcon"]);
         ap->setGarage(a["garage"]);
+        for (auto& c : clients) {
+            if (ap->getIdClient() == 0) {
+                break;
+            }
+            if (c->getId() == a["idClient"]) {
+                c->addAppartement(*ap);
+                break;
+            }
+        }
         appartements.push_back(ap);
     }
 
@@ -97,6 +130,15 @@ int main() {
         ga->setFerme(g["ferme"]);
         ga->setAlarme(g["alarme"]);
         ga->setBox(g["box"]);
+        for (auto& c : clients) {
+            if (ga->getIdClient() == 0) {
+                break;
+            }
+            if (c->getId() == g["idClient"]) {
+                c->addGarage(*ga);
+                break;
+            }
+        }
         garages.push_back(ga);
     }
 
@@ -110,6 +152,20 @@ int main() {
 
 
 
+    // programme principal
+
+    // menu
+    while (true) {
+        system("cls");
+        afficherMenu();
+        getch();
+        system("cls");
+        afficherBiens();
+        getch();
+        system("cls");
+        break;
+    }
+    
 
 
 
@@ -133,7 +189,8 @@ int main() {
             {"prenom", c->getPrenom()},
             {"civilite", c->getCivilite()},
             {"email", c->getEmail()},
-            {"telephone", c->getTelephone()}
+            {"telephone", c->getTelephone()},
+            {"id", c->getId()}
         });
         j++;
     }
@@ -148,7 +205,8 @@ int main() {
             {"garage", m->getGarage()},
             {"jardin", m->getJardin()},
             {"piscine", m->getPiscine()},
-            {"cave", m->getCave()}
+            {"cave", m->getCave()},
+            {"idClient", m->getIdClient()}
         });
         j++;
     }
@@ -164,7 +222,8 @@ int main() {
             {"numAppartement", a->getNumAppartement()},
             {"ascenseur", a->getAscenseur()},
             {"balcon", a->getBalcon()},
-            {"garage", a->getGarage()}
+            {"garage", a->getGarage()},
+            {"idClient", a->getIdClient()}
         });
         j++;
     }
@@ -177,7 +236,8 @@ int main() {
             {"prix", g->getPrix()},
             {"ferme", g->getFerme()},
             {"alarme", g->getAlarme()},
-            {"box", g->getBox()}
+            {"box", g->getBox()},
+            {"idClient", g->getIdClient()}
         });
         j++;
     }
@@ -201,7 +261,7 @@ int main() {
     // std::ofstream outputFile("./files/data.json", std::ios::out | std::ios::trunc);
     // outputFile << jsonData;
 
-
+    // libération de la mémoire
     jsonClient.clear();
     jsonMaison.clear();
     jsonAppartement.clear();
