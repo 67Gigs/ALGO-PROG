@@ -7,6 +7,7 @@
 #include "../class/maison.hpp"
 #include "../class/garage.hpp"
 #include "../class/bien.hpp"
+#include "../class/date.hpp"
 
 
 unsigned int client::uniqueID = 1;
@@ -20,11 +21,16 @@ client::client() {
     email = "";
     telephone = "";
     solde = 0;
+    naissance.jour = 0;
+    naissance.mois = 0;
+    naissance.annee = 0;
 }
 
 
 // Destructeur
-client::~client() {}
+client::~client() {
+    std::cout << "client detruit" << std::endl;
+}
 
 // Getters
 
@@ -54,6 +60,10 @@ unsigned int client::getId() const {
 
 double client::getSolde() const {
     return solde;
+}
+
+date client::getNaissance() const {
+    return naissance;
 }
 
 // Setters
@@ -112,47 +122,71 @@ void client::setSolde(double _solde) {
     }
 }
 
+void client::setJourNaissance(int jour) {
+    if (jour < 1 || jour > 31) {
+        std::cout << "Le jour doit être compris entre 1 et 31" << std::endl;
+    } else {
+        naissance.jour = jour;
+    }
+}
+
+void client::setMoisNaissance(int mois) {
+    if (mois < 1 || mois > 12) {
+        std::cout << "Le mois doit être compris entre 1 et 12" << std::endl;
+    } else {
+        naissance.mois = mois;
+    }
+}
+
+void client::setAnneeNaissance(int annee) {
+    if (annee > 2004) {
+        std::cout << "Le.a client.e doit etre majeur.e" << std::endl;
+    } else {
+        naissance.annee = annee;
+    }
+}
+
 // methodes
-void client::addMaison(maison maison) {
+void client::addMaison(maison *maison) {
     maisons.push_back(maison);
-    maison.setIdClient(id);
+    maison->setIdClient(id);
 }
 
-void client::addAppartement(appartement appartement) {
+void client::addAppartement(appartement *appartement) {
     appartements.push_back(appartement);
-    appartement.setIdClient(id);
+    appartement->setIdClient(id);
 }
 
-void client::addGarage(garage garage) {
+void client::addGarage(garage *garage) {
     garages.push_back(garage);
-    garage.setIdClient(id);
+    garage->setIdClient(id);
 }
 
-void client::removeMaison(maison maison) {
+void client::removeMaison(maison *maison) {
     for (int i = 0; i < maisons.size(); i++) {
-        if (maisons[i].getId() == maison.getId()) {
+        if (maisons[i]->getId() == maison->getId()) {
             maisons.erase(maisons.begin() + i);
-            maison.setIdClient(0);
+            maison->setIdClient(0);
             break;
         }
     }
 }
 
-void client::removeAppartement(appartement appartement) {
+void client::removeAppartement(appartement *appartement) {
     for (int i = 0; i < appartements.size(); i++) {
-        if (appartements[i].getId() == appartement.getId()) {
+        if (appartements[i]->getId() == appartement->getId()) {
             appartements.erase(appartements.begin() + i);
-            appartement.setIdClient(0);
+            appartement->setIdClient(0);
             break;
         }
     }
 }
 
-void client::removeGarage(garage garage) {
+void client::removeGarage(garage *garage) {
     for (int i = 0; i < garages.size(); i++) {
-        if (garages[i].getId() == garage.getId()) {
+        if (garages[i]->getId() == garage->getId()) {
             garages.erase(garages.begin() + i);
-            garage.setIdClient(0);
+            garage->setIdClient(0);
             break;
         }
     }
@@ -162,30 +196,36 @@ void client::afficherBiens() const{
     std::cout << "Biens de " << civilite << " " << nom << " " << prenom << " :" << std::endl;
     std::cout << "Maisons :" << std::endl;
     for (int i = 0; i < maisons.size(); i++) {
-        std::cout << "    " << maisons[i].getAdresse() << std::endl;
-        std::cout << "    " << maisons[i].getPrix() << "euros/mois" << std::endl;
-        std::cout << "    " << maisons[i].getSurface() << "m²" << std::endl;
-        std::cout << "    " << maisons[i].getNbPieces() << " pièces" << std::endl;
+        std::cout << "    " << maisons[i]->getAdresse() << std::endl;
+        std::cout << "    " << maisons[i]->getPrix() << "euros/mois" << std::endl;
+        std::cout << "    " << maisons[i]->getSurface() << "m²" << std::endl;
+        std::cout << "    " << maisons[i]->getNbPieces() << " pièces" << std::endl;
         std::cout << "Appuyez sur une touche pour continuer" << std::endl;
         getch();
     }
     std::cout << "Appartements :" << std::endl;
     for (int i = 0; i < appartements.size(); i++) {
-        std::cout << "    " << appartements[i].getAdresse() << std::endl;
-        std::cout << "    " << appartements[i].getPrix() << "euros/mois" << std::endl;
-        std::cout << "    " << appartements[i].getSurface() << "m²" << std::endl;
-        std::cout << "    " << appartements[i].getNbPieces() << " pièces" << std::endl;
+        std::cout << "    " << appartements[i]->getAdresse() << std::endl;
+        std::cout << "    " << appartements[i]->getPrix() << "euros/mois" << std::endl;
+        std::cout << "    " << appartements[i]->getSurface() << "m²" << std::endl;
+        std::cout << "    " << appartements[i]->getNbPieces() << " pièces" << std::endl;
         std::cout << "Appuyez sur une touche pour continuer" << std::endl;
         getch();
     }
     std::cout << "Garages :" << std::endl;
     for (int i = 0; i < garages.size(); i++) {
-        std::cout << "    " << garages[i].getAdresse() << std::endl;
-        std::cout << "    " << garages[i].getPrix() << "euros/mois" << std::endl;
-        std::cout << "    " << garages[i].getSurface() << "m²" << std::endl;
-        std::cout << "    " << garages[i].getNbPlaces() << " pièces" << std::endl;
+        std::cout << "    " << garages[i]->getAdresse() << std::endl;
+        std::cout << "    " << garages[i]->getPrix() << "euros/mois" << std::endl;
+        std::cout << "    " << garages[i]->getSurface() << "m²" << std::endl;
+        std::cout << "    " << garages[i]->getNbPlaces() << " pièces" << std::endl;
         std::cout << "Appuyez sur une touche pour continuer" << std::endl;
         getch();
     }
-    
+}
+
+// operateurs de comparaison
+bool client::operator==(client const& a) const {
+    bool nom = this->nom == a.nom;
+    bool prenom = this->prenom == a.prenom;
+    return nom && prenom;    
 }

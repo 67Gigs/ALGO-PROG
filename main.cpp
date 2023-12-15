@@ -10,6 +10,7 @@
 #include "src/appartement.cpp"
 #include "src/client.cpp"
 #include "src/garage.cpp"
+#include "src/date.cpp"
 
 #include "nlohmann/json.hpp"
 
@@ -66,6 +67,10 @@ int main() {
         cl->setEmail(c["email"]);
         cl->setTelephone(c["telephone"]);
         cl->setId(c["id"]);
+        cl->setSolde(c["solde"]);
+        cl->setJourNaissance(c["jourNaissance"]);
+        cl->setMoisNaissance(c["moisNaissance"]);
+        cl->setAnneeNaissance(c["anneeNaissance"]);
         clients.push_back(cl);
     }
 
@@ -92,7 +97,7 @@ int main() {
                 break;
             }
             if (c->getId() == m["idClient"]) {
-                c->addMaison(*ma);
+                c->addMaison(ma);
                 break;
             }
         }
@@ -115,7 +120,7 @@ int main() {
                 break;
             }
             if (c->getId() == a["idClient"]) {
-                c->addAppartement(*ap);
+                c->addAppartement(ap);
                 break;
             }
         }
@@ -135,7 +140,7 @@ int main() {
                 break;
             }
             if (c->getId() == g["idClient"]) {
-                c->addGarage(*ga);
+                c->addGarage(ga);
                 break;
             }
         }
@@ -335,12 +340,7 @@ int main() {
 
 
 
-
-
-
-
-
-
+   
 
     // en fin de programme, on réécrit les fichiers
     // stockage des données dans les objet json
@@ -359,7 +359,11 @@ int main() {
             {"civilite", c->getCivilite()},
             {"email", c->getEmail()},
             {"telephone", c->getTelephone()},
-            {"id", c->getId()}
+            {"id", c->getId()},
+            {"solde", c->getSolde()},
+            {"jourNaissance", c->getNaissance().jour},
+            {"moisNaissance", c->getNaissance().mois},
+            {"anneeNaissance", c->getNaissance().annee}
         });
         j++;
     }

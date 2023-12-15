@@ -19,7 +19,9 @@ maison::maison() {
 
 // Destructeur
 
-maison::~maison() {}
+maison::~maison() {
+    std::cout << "Maison detruite" << std::endl;
+}
 
 // Getters
 
@@ -54,7 +56,11 @@ unsigned int maison::getIdClient() const {
 // Setters
 
 void maison::setNbPieces(int _nbPieces) {
-    nbPieces = _nbPieces;
+    if (_nbPieces > 0) {
+        nbPieces = _nbPieces;
+    } else {
+        std::cout << "Le nombre de pieces doit etre superieur a 0" << std::endl;
+    }
 }
 
 void maison::setGarage(bool _garage) {
