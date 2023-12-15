@@ -20,10 +20,10 @@ public:
     ~bien();
 
     // Getters
-    std::string getAdresse();
-    int getSurface();
-    double getPrix();
-    unsigned int getId();
+    std::string getAdresse() const;
+    int getSurface() const;
+    double getPrix() const;
+    unsigned int getId() const;
 
     // Setters
     void setAdresse(std::string adresse);

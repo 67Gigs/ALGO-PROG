@@ -35,7 +35,7 @@ int main() {
     int j = 0;
     int i = 0;
     int maxId = 0;
-    std::string choix;
+    int choix;
 
     // lecture de fichier
 
@@ -142,28 +142,190 @@ int main() {
         garages.push_back(ga);
     }
 
-
-    // reconstruction des objets
-
-    jsonClient = json::array();
-    jsonMaison = json::array();
-    jsonAppartement = json::array();
-    jsonGarage = json::array();
-
-
-
     // programme principal
 
     // menu
     while (true) {
         system("cls");
         afficherMenu();
-        getch();
-        system("cls");
-        afficherBiens();
-        getch();
-        system("cls");
-        break;
+        if (!(std::cin >> choix)) {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            choix = -1;
+        }
+
+        if (choix == 1) {
+            // ajouter un bien
+            system("cls");
+            ajoutBien();
+            if (!(std::cin >> choix)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                choix = -1;
+            }
+
+
+        } else if (choix == 2) {
+            // modifier un bien
+            system("cls");
+            modifierBien();
+            if (!(std::cin >> choix)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                choix = -1;
+            }
+
+        } else if (choix == 3) {
+            // supprimer un bien
+            system("cls");
+            supprimerBien();
+            if (!(std::cin >> choix)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                choix = -1;
+            }
+            
+        } else if (choix == 4) { // afficher les biens
+            system("cls");
+            afficherBiens();
+            if (!(std::cin >> choix)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                choix = -1;
+            }
+
+        } else if (choix == 5) { // ajouter un client
+            system("cls");
+            // fonction ajout client
+
+        } else if (choix == 6) { // modifier un client
+            system("cls");
+            // fonction modifier client
+        } else if (choix == 7) { // supprimer un client
+            system("cls");
+            // fonction supprimer client
+        } else if (choix == 8) { // afficher les clients
+            system("cls");
+            // fonction afficher clients
+            std::cout << "----------------------------------------" << std::endl;
+            std::cout << "Liste des clients" << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            for (auto& c : clients) {
+                std::cout << "ID : " << c->getId() << std::endl;
+                std::cout << c->getCivilite() << " " << c->getNom() << " " << c->getPrenom() << std::endl;
+                std::cout << "Email : " << c->getEmail() << std::endl;
+                std::cout << "Telephone : " << c->getTelephone() << std::endl;
+                std::cout << "Solde : " << c->getSolde() << std::endl;
+                std::cout << "Bien : " << std::endl;
+                c->afficherBiens();
+                std::cout << "----------------------------------------" << std::endl;
+            }
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            getch();
+        } else if (choix == 9) { // sauvegarder  
+            system("cls");
+
+            jsonClient = json::array();
+            jsonMaison = json::array();
+            jsonAppartement = json::array();
+            jsonGarage = json::array();
+
+            j = 0;
+            for (auto& c : clients) {
+                jsonClient[j].push_back({
+                    {"nom", c->getNom()},
+                    {"prenom", c->getPrenom()},
+                    {"civilite", c->getCivilite()},
+                    {"email", c->getEmail()},
+                    {"telephone", c->getTelephone()},
+                    {"id", c->getId()}
+                });
+                j++;
+            }
+
+            j = 0;
+            for (auto& m : maisons) {
+                jsonMaison[j].push_back({
+                    {"adresse", m->getAdresse()},
+                    {"surface", m->getSurface()},
+                    {"prix", m->getPrix()},
+                    {"nbPieces", m->getNbPieces()},
+                    {"garage", m->getGarage()},
+                    {"jardin", m->getJardin()},
+                    {"piscine", m->getPiscine()},
+                    {"cave", m->getCave()},
+                    {"idClient", m->getIdClient()}
+                });
+                j++;
+            }
+
+            j = 0;
+            for (auto& a : appartements) {
+                jsonAppartement[j].push_back({
+                    {"adresse", a->getAdresse()},
+                    {"surface", a->getSurface()},
+                    {"prix", a->getPrix()},
+                    {"nbPieces", a->getNbPieces()},
+                    {"numEtage", a->getNumEtage()},
+                    {"numAppartement", a->getNumAppartement()},
+                    {"ascenseur", a->getAscenseur()},
+                    {"balcon", a->getBalcon()},
+                    {"garage", a->getGarage()},
+                    {"idClient", a->getIdClient()}
+                });
+                j++;
+            }
+
+            j = 0;
+            for (auto& g : garages) {
+                jsonGarage[j].push_back({
+                    {"adresse", g->getAdresse()},
+                    {"surface", g->getSurface()},
+                    {"prix", g->getPrix()},
+                    {"ferme", g->getFerme()},
+                    {"alarme", g->getAlarme()},
+                    {"box", g->getBox()},
+                    {"idClient", g->getIdClient()}
+                });
+                j++;
+            }
+
+            // sauvegarde dans les fichiers
+            
+            std::ofstream outputClient("./files/clients.json", std::ios::out | std::ios::trunc);
+            outputClient << jsonClient;
+
+            std::ofstream outputMaison("./files/maisons.json", std::ios::out | std::ios::trunc);
+            outputMaison << jsonMaison;
+
+            std::ofstream outputAppartement("./files/appartements.json", std::ios::out | std::ios::trunc);
+            outputAppartement << jsonAppartement;
+
+            std::ofstream outputGarage("./files/garages.json", std::ios::out | std::ios::trunc);
+            outputGarage << jsonGarage;
+
+            outputClient.close();
+            outputAppartement.close();
+            outputMaison.close();
+            outputGarage.close();
+
+            std::cout << "Sauvegarde effectuee" << std::endl;   
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            getch();
+
+        } else if (choix == 0) {
+            // quitter
+            system("cls");
+            std::cout << "Au revoir !" << std::endl;
+            break;
+                
+        } else {
+            system("cls");
+            std::cout << "Erreur de saisie" << std::endl;
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            // stop le programme jusqu'à ce qu'une touche soit appuyée
+            getch();
+        }
     }
     
 
@@ -182,6 +344,13 @@ int main() {
 
     // en fin de programme, on réécrit les fichiers
     // stockage des données dans les objet json
+
+    jsonClient = json::array();
+    jsonMaison = json::array();
+    jsonAppartement = json::array();
+    jsonGarage = json::array();
+
+
     j = 0;
     for (auto& c : clients) {
         jsonClient[j].push_back({

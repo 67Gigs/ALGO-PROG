@@ -19,37 +19,41 @@ client::client() {
     civilite = "";
     email = "";
     telephone = "";
+    solde = 0;
 }
 
 
 // Destructeur
-client::~client() {
-}
+client::~client() {}
 
 // Getters
 
-std::string client::getNom() {
+std::string client::getNom() const {
     return nom;
 }
 
-std::string client::getPrenom() {
+std::string client::getPrenom() const {
     return prenom;
 }
 
-std::string client::getCivilite() {
+std::string client::getCivilite() const {
     return civilite;
 }
 
-std::string client::getEmail() {
+std::string client::getEmail() const {
     return email;
 }
 
-std::string client::getTelephone() {
+std::string client::getTelephone() const {
     return telephone;
 }
 
-unsigned int client::getId() {
+unsigned int client::getId() const {
     return id;
+}
+
+double client::getSolde() const {
+    return solde;
 }
 
 // Setters
@@ -89,6 +93,8 @@ void client::setEmail(std::string _email) {
 void client::setTelephone(std::string _telephone) {
     if (_telephone == "") {
         std::cout << "Le telephone ne peut pas être vide" << std::endl;
+    } else if (_telephone.length() != 14) {
+        std::cout << "Le telephone doit être au format +33 x xx xx xx xx" << std::endl;
     } else {
         telephone = _telephone;
     }
@@ -96,6 +102,14 @@ void client::setTelephone(std::string _telephone) {
 
 void client::setId(unsigned int _id) {
     id = _id;
+}
+
+void client::setSolde(double _solde) {
+    if (_solde < 0) {
+        std::cout << "Le solde ne peut pas être négatif" << std::endl;
+    } else {
+        solde = _solde;
+    }
 }
 
 // methodes
@@ -144,23 +158,32 @@ void client::removeGarage(garage garage) {
     }
 }
 
-void client::afficherBiens() {
+void client::afficherBiens() const{
     std::cout << "Biens de " << civilite << " " << nom << " " << prenom << " :" << std::endl;
     std::cout << "Maisons :" << std::endl;
     for (int i = 0; i < maisons.size(); i++) {
         std::cout << "    " << maisons[i].getAdresse() << std::endl;
+        std::cout << "    " << maisons[i].getPrix() << "euros/mois" << std::endl;
+        std::cout << "    " << maisons[i].getSurface() << "m²" << std::endl;
+        std::cout << "    " << maisons[i].getNbPieces() << " pièces" << std::endl;
         std::cout << "Appuyez sur une touche pour continuer" << std::endl;
         getch();
     }
     std::cout << "Appartements :" << std::endl;
     for (int i = 0; i < appartements.size(); i++) {
-        std::cout << "    " << appartements[i].getAdresse() << appartements[i].getPrix() << std::endl;
+        std::cout << "    " << appartements[i].getAdresse() << std::endl;
+        std::cout << "    " << appartements[i].getPrix() << "euros/mois" << std::endl;
+        std::cout << "    " << appartements[i].getSurface() << "m²" << std::endl;
+        std::cout << "    " << appartements[i].getNbPieces() << " pièces" << std::endl;
         std::cout << "Appuyez sur une touche pour continuer" << std::endl;
         getch();
     }
     std::cout << "Garages :" << std::endl;
     for (int i = 0; i < garages.size(); i++) {
         std::cout << "    " << garages[i].getAdresse() << std::endl;
+        std::cout << "    " << garages[i].getPrix() << "euros/mois" << std::endl;
+        std::cout << "    " << garages[i].getSurface() << "m²" << std::endl;
+        std::cout << "    " << garages[i].getNbPlaces() << " pièces" << std::endl;
         std::cout << "Appuyez sur une touche pour continuer" << std::endl;
         getch();
     }

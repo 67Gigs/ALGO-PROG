@@ -25,23 +25,23 @@ garage::~garage() {}
 
 // Getters
 
-int garage::getNbPlaces() {
+int garage::getNbPlaces() const {
     return numPlace;
 }
 
-bool garage::getFerme() {
+bool garage::getFerme() const {
     return ferme;
 }
 
-bool garage::getAlarme() {
+bool garage::getAlarme() const {
     return alarme;
 }
 
-bool garage::getBox() {
+bool garage::getBox() const {
     return box;
 }
 
-unsigned int garage::getIdClient() {
+unsigned int garage::getIdClient() const {
     return idClient;
 }
 

@@ -19,19 +19,19 @@ bien::~bien() {}
 
 // Getters
 
-std::string bien::getAdresse() {
+std::string bien::getAdresse() const {
     return adresse;
 }
 
-int bien::getSurface() {
+int bien::getSurface() const {
     return surface;
 }
 
-double bien::getPrix() {
+double bien::getPrix() const {
     return prix;
 }
 
-unsigned int bien::getId() {
+unsigned int bien::getId() const {
     return id;
 }
 

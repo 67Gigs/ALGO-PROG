@@ -22,11 +22,11 @@ public:
     ~garage();
     
     // getters
-    int getNbPlaces();
-    bool getFerme();
-    bool getAlarme();
-    bool getBox();
-    unsigned int getIdClient();
+    int getNbPlaces() const;
+    bool getFerme() const;
+    bool getAlarme() const;
+    bool getBox() const;
+    unsigned int getIdClient() const;
 
     // setters
     void setNbPlaces(int nbPlaces);

@@ -23,31 +23,31 @@ maison::~maison() {}
 
 // Getters
 
-int maison::getNbPieces() {
+int maison::getNbPieces() const {
     return nbPieces;
 }
 
-bool maison::getGarage() {
+bool maison::getGarage() const {
     return garage;
 }
 
-bool maison::getJardin() {
+bool maison::getJardin() const {
     return jardin;
 }
 
-bool maison::getPiscine() {
+bool maison::getPiscine() const {
     return piscine;
 }
 
-bool maison::getCave() {
+bool maison::getCave() const {
     return cave;
 }
 
-unsigned int maison::getId() {
+unsigned int maison::getId() const {
     return id;
 }
 
-unsigned int maison::getIdClient() {
+unsigned int maison::getIdClient() const {
     return idClient;
 }
 

@@ -25,31 +25,31 @@ appartement::appartement() {
 appartement::~appartement() {}
 
 // Getters
-int appartement::getNbPieces() {
+int appartement::getNbPieces() const {
     return nbPieces;
 }
 
-int appartement::getNumEtage() {
+int appartement::getNumEtage() const {
     return numEtage;
 }
 
-int appartement::getNumAppartement() {
+int appartement::getNumAppartement() const {
     return numAppartement;
 }
 
-bool appartement::getAscenseur() {
+bool appartement::getAscenseur() const {
     return ascenseur;
 }
 
-bool appartement::getBalcon() {
+bool appartement::getBalcon() const {
     return balcon;
 }
 
-bool appartement::getGarage() {
+bool appartement::getGarage() const {
     return garage;
 }
 
-unsigned int appartement::getIdClient() {
+unsigned int appartement::getIdClient() const {
     return idClient;
 }
 

@@ -23,13 +23,13 @@ public:
     ~appartement();
 
     // getters
-    int getNumEtage();
-    int getNumAppartement();
-    int getNbPieces();
-    bool getGarage();
-    bool getBalcon();
-    bool getAscenseur();
-    unsigned int getIdClient();
+    int getNumEtage() const;
+    int getNumAppartement() const;
+    int getNbPieces() const;
+    bool getGarage() const;
+    bool getBalcon() const;
+    bool getAscenseur() const;
+    unsigned int getIdClient() const;
 
     // Setters
     void setNumEtage(int numEtage);

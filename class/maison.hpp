@@ -23,13 +23,13 @@ public:
     ~maison();
 
     // getters
-    int getNbPieces();
-    bool getGarage();
-    bool getJardin();
-    bool getPiscine();
-    bool getCave();
-    unsigned int getId();
-    unsigned int getIdClient();
+    int getNbPieces() const;
+    bool getGarage() const;
+    bool getJardin() const;
+    bool getPiscine() const;
+    bool getCave() const;
+    unsigned int getId() const;
+    unsigned int getIdClient() const;
 
     // setters
     void setNbPieces(int nbPieces);
