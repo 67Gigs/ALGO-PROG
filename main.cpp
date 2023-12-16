@@ -56,9 +56,10 @@ int main() {
         
     }
 
-    // stockage des données dans les vecteurs
     i = 0;
+    // stockage des données dans les vecteurs
     for (auto& c : jsonClient) {
+            // std::cout << "----------------------------------------" << std::endl;
         client *cl = new client();
         cl->setNom(c[i]["nom"]);
         cl->setPrenom(c[i]["prenom"]);
@@ -72,8 +73,8 @@ int main() {
         cl->setAnneeNaissance(c[i]["anneeNaissance"]);
         clients.push_back(cl);
         // std::cout << "Client " << cl->getNom() << " " << cl->getPrenom() << " ajoute" << std::endl;
-        i++;
     }
+
 
     for (size_t i = 0; i < clients.size(); i++) {
         if (clients[i]->getId() > maxId) {
@@ -94,19 +95,19 @@ int main() {
         ma->setJardin(m[i]["jardin"]);
         ma->setPiscine(m[i]["piscine"]);
         ma->setCave(m[i]["cave"]);
+        // std::cout << "ID du client : " << m[i]["idClient"] << std::endl;
+        // getch();
         for (auto& c : clients) {
-            if (ma->getIdClient() == 0) {
-                break;
-            }
             if (c->getId() == m[i]["idClient"]) {
                 c->addMaison(ma);
                 break;
             }
         }
-        i++;
         maisons.push_back(ma);
+
     }
 
+    // std::cout << "----------------------------------------" << std::endl;
     i = 0;
     for (auto& a : jsonAppartement) {
         appartement *ap = new appartement();
@@ -128,9 +129,8 @@ int main() {
                 break;
             }
         }
-
-        i++;
         appartements.push_back(ap);
+        
     }
 
     i = 0;
@@ -151,9 +151,8 @@ int main() {
                 break;
             }
         }
-        
-        i++;
         garages.push_back(ga);
+
     }
 
     // getch();
@@ -1615,13 +1614,6 @@ int main() {
         }
     }
     
-
-
-
-
-
-
-
    
 
     // en fin de programme, on réécrit les fichiers
@@ -1721,6 +1713,29 @@ int main() {
     jsonMaison.clear();
     jsonAppartement.clear();
     jsonGarage.clear();
+
+    for (auto& c : clients) {
+        delete c;
+    }
+
+    for (auto& m : maisons) {
+        delete m;
+    }
+
+    for (auto& a : appartements) {
+        delete a;
+    }
+
+    for (auto& g : garages) {
+        delete g;
+    }
+
+    clients.clear();
+    maisons.clear();
+    appartements.clear();
+    garages.clear();
+
+
 
 
     return 0;

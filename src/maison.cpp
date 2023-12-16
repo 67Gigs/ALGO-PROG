@@ -20,7 +20,6 @@ maison::maison() {
 // Destructeur
 
 maison::~maison() {
-    std::cout << "Maison detruite" << std::endl;
 }
 
 // Getters

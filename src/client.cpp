@@ -29,7 +29,6 @@ client::client() {
 
 // Destructeur
 client::~client() {
-    std::cout << "client detruit" << std::endl;
 }
 
 // Getters
@@ -220,8 +219,6 @@ void client::afficherBiens() const{
         std::cout << "    " << maisons[i]->getPrix() << "euros/mois" << std::endl;
         std::cout << "    " << maisons[i]->getSurface() << "m²" << std::endl;
         std::cout << "    " << maisons[i]->getNbPieces() << " pièces" << std::endl;
-        std::cout << "Appuyez sur une touche pour continuer" << std::endl;
-        getch();
     }
     std::cout << "Appartements :" << std::endl;
     for (int i = 0; i < appartements.size(); i++) {
@@ -229,8 +226,6 @@ void client::afficherBiens() const{
         std::cout << "    " << appartements[i]->getPrix() << "euros/mois" << std::endl;
         std::cout << "    " << appartements[i]->getSurface() << "m²" << std::endl;
         std::cout << "    " << appartements[i]->getNbPieces() << " pièces" << std::endl;
-        std::cout << "Appuyez sur une touche pour continuer" << std::endl;
-        getch();
     }
     std::cout << "Garages :" << std::endl;
     for (int i = 0; i < garages.size(); i++) {
@@ -238,8 +233,6 @@ void client::afficherBiens() const{
         std::cout << "    " << garages[i]->getPrix() << "euros/mois" << std::endl;
         std::cout << "    " << garages[i]->getSurface() << "m²" << std::endl;
         std::cout << "    " << garages[i]->getNbPlaces() << " pièces" << std::endl;
-        std::cout << "Appuyez sur une touche pour continuer" << std::endl;
-        getch();
     }
 }
 
