@@ -71,7 +71,7 @@ int main() {
         cl->setMoisNaissance(c[i]["moisNaissance"]);
         cl->setAnneeNaissance(c[i]["anneeNaissance"]);
         clients.push_back(cl);
-        std::cout << "Client " << cl->getNom() << " " << cl->getPrenom() << " ajouté" << std::endl;
+        // std::cout << "Client " << cl->getNom() << " " << cl->getPrenom() << " ajoute" << std::endl;
         i++;
     }
 
@@ -156,7 +156,7 @@ int main() {
         garages.push_back(ga);
     }
 
-    getch();
+    // getch();
 
     // programme principal
 
