@@ -112,7 +112,7 @@ bool client::setTelephone(std::string _telephone) {
     if (_telephone == "") {
         std::cout << "Le telephone ne peut pas être vide" << std::endl;
         return false;
-    } else if (_telephone.length() != 14) {
+    } else if (_telephone.length() != 12) {
         std::cout << "Le telephone doit être au format +33 x xx xx xx xx" << std::endl;
         return false;
     } else {
@@ -123,6 +123,7 @@ bool client::setTelephone(std::string _telephone) {
 
 bool client::setId(unsigned int _id) {
     id = _id;
+    return true;
 }
 
 bool client::setSolde(double _solde) {
@@ -244,7 +245,5 @@ void client::afficherBiens() const{
 
 // operateurs de comparaison
 bool client::operator==(client const& a) const {
-    bool nom = this->nom == a.nom;
-    bool prenom = this->prenom == a.prenom;
-    return nom && prenom;    
+    return (nom == a.nom && prenom == a.prenom);
 }

@@ -66,8 +66,9 @@ public:
     void removeGarage(garage *garage);
     virtual void afficherBiens() const;
 
-    // operateurs de comparaison
+    // operateurs de comparaison entre deux clients avec leur nom et prenom
     bool operator==(const client &c) const;
+
 };
 
 

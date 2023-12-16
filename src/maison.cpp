@@ -58,8 +58,10 @@ unsigned int maison::getIdClient() const {
 bool maison::setNbPieces(int _nbPieces) {
     if (_nbPieces > 0) {
         nbPieces = _nbPieces;
+        return true;
     } else {
         std::cout << "Le nombre de pieces doit etre superieur a 0" << std::endl;
+        return false;
     }
 }
 

@@ -45,16 +45,15 @@ int main() {
         return 1;
     } else {
 
-        // jsonClient = json::parse(inputClient);
-        // inputClient.close();
+        jsonClient = json::parse(inputClient);
+        inputClient.close();
         jsonMaison = json::parse(inputMaison);
         inputMaison.close();
         jsonAppartement = json::parse(inputAppartement);
         inputAppartement.close();
         jsonGarage = json::parse(inputGarage);
         inputGarage.close();
-        // jsonData = json::parse(inputFile);
-        // inputFile.close();
+        
     }
 
     // stockage des données dans les vecteurs
@@ -72,6 +71,7 @@ int main() {
         cl->setMoisNaissance(c["moisNaissance"]);
         cl->setAnneeNaissance(c["anneeNaissance"]);
         clients.push_back(cl);
+        std::cout << "Client " << cl->getNom() << " " << cl->getPrenom() << " ajouté" << std::endl;
     }
 
     for (size_t i = 0; i < clients.size(); i++) {
@@ -146,6 +146,8 @@ int main() {
         }
         garages.push_back(ga);
     }
+
+    getch();
 
     // programme principal
 
@@ -1232,14 +1234,17 @@ int main() {
             if (choix == 0) {
                 continue;
             } else if (choix == 1) {
+                system("cls");
                 for (auto& m : maisons) {
                     m->affiche();
                 }
             } else if (choix == 2) {
+                system("cls");
                 for (auto& ap : appartements) {
                     ap->affiche();
                 }
             } else if (choix == 3) {
+                system("cls");
                 for (auto& g : garages) {
                     g->affiche();
                 }
@@ -1275,12 +1280,25 @@ int main() {
                 std::cout << "Civilite : ";
                 std::cin >> civilite;
             }
+
+            clTMP->setCivilite(civilite);
+
             std::cout << "Nom : ";
             std::getline(std::cin >> std::ws, nom);
-            clTMP->setNom(nom);
 
             std::cout << "Prenom : ";
             std::getline(std::cin >> std::ws, prenom);
+
+            for (auto& c : clients) {
+                if (c == clTMP) {
+                    std::cout << "Client deja existant" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                    break;
+                }
+            }
+
+            clTMP->setNom(nom);
             clTMP->setPrenom(prenom);
 
             std::cout << "Email : ";
