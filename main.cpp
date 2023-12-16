@@ -159,8 +159,7 @@ int main() {
             choix = -1;
         }
 
-        if (choix == 1) {
-            // ajouter un bien
+        if (choix == 1) { // ajouter un bien
             system("cls");
             ajoutBien();
             if (!(std::cin >> choix)) {
@@ -169,9 +168,457 @@ int main() {
                 choix = -1;
             }
 
+            if (choix == 0) {
+                continue;
+            } else if (choix == 1) {
+                maison *ma = new maison();
+                std::string adresse;
+                int surface;
+                int prix;
+                int nbPieces;
+                bool garage;
+                bool jardin;
+                bool piscine;
+                bool cave;
+                int idClient;
 
-        } else if (choix == 2) {
-            // modifier un bien
+                std::cout << "----------------------------------------" << std::endl;
+                std::cout << "Ajout d'une maison" << std::endl;
+                std::cout << "----------------------------------------" << std::endl;
+                std::cout << "Adresse : ";
+                std::getline(std::cin >> std::ws, adresse);
+                ma->setAdresse(adresse);
+                
+                std::cout << "Surface : ";
+                if (!(std::cin >> surface)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    surface = -1;
+                }
+                while (!ma->setSurface(surface)) {
+                    std::cout << "Surface : ";
+                    if (!(std::cin >> surface)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        surface = -1;
+                    }                    
+                }
+
+                std::cout << "Prix : ";
+                if (!(std::cin >> prix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    prix = -1;
+                }
+                while (!ma->setPrix(prix)) {
+                    std::cout << "Prix : ";
+                    if (!(std::cin >> prix)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        prix = -1;
+                    }                    
+                }
+
+                std::cout << "Nombre de pieces : ";
+                if (!(std::cin >> nbPieces)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    nbPieces = -1;
+                }
+                while (!ma->setNbPieces(nbPieces)) {
+                    std::cout << "Nombre de pieces : ";
+                    if (!(std::cin >> nbPieces)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        nbPieces = -1;
+                    }                    
+                }
+
+                std::cout << "Garage (0/1) : ";
+                if (!(std::cin >> garage)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    garage = -1;
+                }
+                while (!ma->setGarage(garage)) {
+                    std::cout << "Garage (0/1) : ";
+                    if (!(std::cin >> garage)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        garage = -1;
+                    }                    
+                }
+
+                std::cout << "Jardin (0/1) : ";
+                if (!(std::cin >> jardin)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    jardin = -1;
+                }
+                while (!ma->setJardin(jardin)) {
+                    std::cout << "Jardin (0/1) : ";
+                    if (!(std::cin >> jardin)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        jardin = -1;
+                    }                    
+                }
+
+                std::cout << "Piscine (0/1) : ";
+                if (!(std::cin >> piscine)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    piscine = -1;
+                }
+                while (!ma->setPiscine(piscine)) {
+                    std::cout << "Piscine (0/1) : ";
+                    if (!(std::cin >> piscine)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        piscine = -1;
+                    }                    
+                }
+
+                std::cout << "Cave (0/1) : ";
+                if (!(std::cin >> cave)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    cave = -1;
+                }
+                while (!ma->setCave(cave)) {
+                    std::cout << "Cave (0/1) : ";
+                    if (!(std::cin >> cave)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        cave = -1;
+                    }                    
+                }
+
+                std::cout << "ID du client : ";
+                if (!(std::cin >> idClient)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    idClient = -1;
+                }
+                while (idClient < 0) {
+                    std::cout << "ID du client : ";
+                    if (!(std::cin >> idClient)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        idClient = -1;
+                    }
+                }
+                ma->setIdClient(idClient);
+
+                if (idClient != 0) {
+                    for (auto& c : clients) {
+                        if (c->getId() == idClient) {
+                            c->addMaison(ma);
+                            break;
+                        }
+                    }
+                }
+
+                maisons.push_back(ma);
+
+            } else if (choix == 2) {
+                appartement *ap = new appartement();
+                std::string adresse;
+                int surface;
+                int prix;
+                int nbPieces;
+                int numEtage;
+                int numAppartement;
+                bool ascenseur;
+                bool balcon;
+                bool garage;
+                int idClient;
+
+                std::cout << "----------------------------------------" << std::endl;
+                std::cout << "Ajout d'un appartement" << std::endl;
+                std::cout << "----------------------------------------" << std::endl;
+
+                std::cout << "Adresse : ";
+                std::getline(std::cin >> std::ws, adresse);
+                ap->setAdresse(adresse);
+
+                std::cout << "Surface : ";
+                if (!(std::cin >> surface)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    surface = -1;
+                }
+                while (!ap->setSurface(surface)) {
+                    std::cout << "Surface : ";
+                    if (!(std::cin >> surface)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        surface = -1;
+                    }                    
+                }
+
+                std::cout << "Prix : ";
+                if (!(std::cin >> prix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    prix = -1;
+                }
+                while (!ap->setPrix(prix)) {
+                    std::cout << "Prix : ";
+                    if (!(std::cin >> prix)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        prix = -1;
+                    }                    
+                }
+
+                std::cout << "Nombre de pieces : ";
+                if (!(std::cin >> nbPieces)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    nbPieces = -1;
+                }
+                while (!ap->setNbPieces(nbPieces)) {
+                    std::cout << "Nombre de pieces : ";
+                    if (!(std::cin >> nbPieces)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        nbPieces = -1;
+                    }                    
+                }
+
+                std::cout << "Numero d'etage : ";
+                if (!(std::cin >> numEtage)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    numEtage = -1;
+                }
+                while (!ap->setNumEtage(numEtage)) {
+                    std::cout << "Numero d'etage : ";
+                    if (!(std::cin >> numEtage)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        numEtage = -1;
+                    }                    
+                }
+
+                std::cout << "Numero d'appartement : ";
+                if (!(std::cin >> numAppartement)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    numAppartement = -1;
+                }
+                while (!ap->setNumAppartement(numAppartement)) {
+                    std::cout << "Numero d'appartement : ";
+                    if (!(std::cin >> numAppartement)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        numAppartement = -1;
+                    }                    
+                }
+
+                std::cout << "Ascenseur (0/1) : ";
+                if (!(std::cin >> ascenseur)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    ascenseur = -1;
+                }
+                while (!ap->setAscenseur(ascenseur)) {
+                    std::cout << "Ascenseur (0/1) : ";
+                    if (!(std::cin >> ascenseur)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        ascenseur = -1;
+                    }                    
+                }
+
+                std::cout << "Balcon (0/1) : ";
+                if (!(std::cin >> balcon)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    balcon = -1;
+                }
+                while (!ap->setBalcon(balcon)) {
+                    std::cout << "Balcon (0/1) : ";
+                    if (!(std::cin >> balcon)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        balcon = -1;
+                    }                    
+                }
+
+                std::cout << "Garage (0/1) : ";
+                if (!(std::cin >> garage)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    garage = -1;
+                }
+                while (!ap->setGarage(garage)) {
+                    std::cout << "Garage (0/1) : ";
+                    if (!(std::cin >> garage)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        garage = -1;
+                    }                    
+                }
+
+                std::cout << "ID du client : ";
+                if (!(std::cin >> idClient)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    idClient = -1;
+                }
+                while (idClient < 0) {
+                    std::cout << "ID du client : ";
+                    if (!(std::cin >> idClient)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        idClient = -1;
+                    }
+                }
+                ap->setIdClient(idClient);
+
+                if (idClient != 0) {
+                    for (auto& c : clients) {
+                        if (c->getId() == idClient) {
+                            c->addAppartement(ap);
+                            break;
+                        }
+                    }
+                }
+
+                appartements.push_back(ap);
+
+
+            } else if (choix == 3) {
+                garage *ga = new garage();
+                std::string adresse;
+                int surface;
+                int prix;
+                bool ferme;
+                bool alarme;
+                bool box;
+                int idClient;
+
+                std::cout << "----------------------------------------" << std::endl;
+                std::cout << "Ajout d'un garage" << std::endl;
+                std::cout << "----------------------------------------" << std::endl;
+                
+                std::cout << "Adresse : ";
+                std::getline(std::cin >> std::ws, adresse);
+                ga->setAdresse(adresse);
+
+                std::cout << "Surface : ";
+                if (!(std::cin >> surface)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    surface = -1;
+                }
+                while (!ga->setSurface(surface)) {
+                    std::cout << "Surface : ";
+                    if (!(std::cin >> surface)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        surface = -1;
+                    }                    
+                }
+
+                std::cout << "Prix : ";
+                if (!(std::cin >> prix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    prix = -1;
+                }
+                while (!ga->setPrix(prix)) {
+                    std::cout << "Prix : ";
+                    if (!(std::cin >> prix)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        prix = -1;
+                    }                    
+                }
+
+                std::cout << "Ferme (0/1) : ";
+                if (!(std::cin >> ferme)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    ferme = -1;
+                }
+                while (!ga->setFerme(ferme)) {
+                    std::cout << "Ferme (0/1) : ";
+                    if (!(std::cin >> ferme)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        ferme = -1;
+                    }                    
+                }
+
+                std::cout << "Alarme (0/1) : ";
+                if (!(std::cin >> alarme)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    alarme = -1;
+                }
+                while (!ga->setAlarme(alarme)) {
+                    std::cout << "Alarme (0/1) : ";
+                    if (!(std::cin >> alarme)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        alarme = -1;
+                    }                    
+                }
+
+                std::cout << "Box (0/1) : ";
+                if (!(std::cin >> box)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    box = -1;
+                }
+                while (!ga->setBox(box)) {
+                    std::cout << "Box (0/1) : ";
+                    if (!(std::cin >> box)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        box = -1;
+                    }                    
+                }
+
+                std::cout << "ID du client : ";
+                if (!(std::cin >> idClient)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    idClient = -1;
+                }
+                while (idClient < 0) {
+                    std::cout << "ID du client : ";
+                    if (!(std::cin >> idClient)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        idClient = -1;
+                    }
+                }
+
+                ga->setIdClient(idClient);
+
+                if (idClient != 0) {
+                    for (auto& c : clients) {
+                        if (c->getId() == idClient) {
+                            c->addGarage(ga);
+                            break;
+                        }
+                    }
+                }
+
+                garages.push_back(ga);
+
+            } else {
+                std::cout << "Erreur de saisie" << std::endl;
+            }
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            getch();
+
+
+        } else if (choix == 2) { // modifier un bien
             system("cls");
             modifierBien();
             if (!(std::cin >> choix)) {
@@ -180,8 +627,497 @@ int main() {
                 choix = -1;
             }
 
-        } else if (choix == 3) {
-            // supprimer un bien
+            if (choix == 0) {
+                continue;
+            } else if (choix == 1) {
+                for (auto& m : maisons) {
+                    m->affiche();
+                }
+                std::cout << "Donnez l'ID de la maison a modifier : ";
+                if (!(std::cin >> choix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    choix = -1;
+                }
+
+                for (auto& m : maisons) {
+                    if (m->getId() == choix) {
+                        std::string adresse;
+                        int surface;
+                        int prix;
+                        int nbPieces;
+                        bool garage;
+                        bool jardin;
+                        bool piscine;
+                        bool cave;
+                        int idClient;
+
+                        std::cout << "----------------------------------------" << std::endl;
+                        std::cout << "Modification d'une maison" << std::endl;
+                        std::cout << "----------------------------------------" << std::endl;
+                       
+                        std::cout << "Adresse : ";
+                        std::getline(std::cin >> std::ws, adresse);
+                        m->setAdresse(adresse);
+
+                        std::cout << "Surface : ";
+                        if (!(std::cin >> surface)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            surface = -1;
+                        }
+                        while (!m->setSurface(surface)) {
+                            std::cout << "Surface : ";
+                            if (!(std::cin >> surface)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                surface = -1;
+                            }                    
+                        }
+
+                        std::cout << "Prix : ";
+                        if (!(std::cin >> prix)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            prix = -1;
+                        }
+                        while (!m->setPrix(prix)) {
+                            std::cout << "Prix : ";
+                            if (!(std::cin >> prix)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                prix = -1;
+                            }                    
+                        }
+
+
+                        std::cout << "Nombre de pieces : ";
+                        if (!(std::cin >> nbPieces)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            nbPieces = -1;
+                        }
+                        while (!m->setNbPieces(nbPieces)) {
+                            std::cout << "Nombre de pieces : ";
+                            if (!(std::cin >> nbPieces)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                nbPieces = -1;
+                            }                    
+                        }
+
+                        std::cout << "Garage (0/1) : ";
+                        if (!(std::cin >> garage)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            garage = -1;
+                        }
+                        while (!m->setGarage(garage)) {
+                            std::cout << "Garage (0/1) : ";
+                            if (!(std::cin >> garage)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                garage = -1;
+                            }                    
+                        }
+
+                        std::cout << "Jardin (0/1) : ";
+                        if (!(std::cin >> jardin)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            jardin = -1;
+                        }
+                        while (!m->setJardin(jardin)) {
+                            std::cout << "Jardin (0/1) : ";
+                            if (!(std::cin >> jardin)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                jardin = -1;
+                            }                    
+                        }
+
+                        std::cout << "Piscine (0/1) : ";
+                        if (!(std::cin >> piscine)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            piscine = -1;
+                        }
+                        while (!m->setPiscine(piscine)) {
+                            std::cout << "Piscine (0/1) : ";
+                            if (!(std::cin >> piscine)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                piscine = -1;
+                            }                    
+                        }
+
+                        std::cout << "Cave (0/1) : ";
+                        if (!(std::cin >> cave)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            cave = -1;
+                        }
+                        while (!m->setCave(cave)) {
+                            std::cout << "Cave (0/1) : ";
+                            if (!(std::cin >> cave)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                cave = -1;
+                            }                    
+                        }
+
+                        std::cout << "ID du client (0 pour enlever le client) : ";
+                        if (!(std::cin >> idClient)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            idClient = -1;
+                        }
+                        while (idClient < 0) {
+                            std::cout << "ID du client (0 pour enlever le client) : ";
+                            if (!(std::cin >> idClient)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                idClient = -1;
+                            }
+                        }
+
+                        for (auto& c : clients) {
+                            if (c->getId() == m->getIdClient()) {
+                                c->removeMaison(m);
+                                break;
+                            }
+                        }
+
+                        for (auto& c : clients) {
+                            if (c->getId() == idClient) {
+                                c->addMaison(m);
+                                break;
+                            }
+                        }
+
+                        m->setIdClient(idClient);
+
+                        break;
+                    }
+                }
+            } else if (choix == 2) {
+                for (auto& ap : appartements) {
+                    ap->affiche();
+                }
+                std::cout << "Donnez l'ID de l'appartement a modifier : ";
+                if (!(std::cin >> choix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    choix = -1;
+                }
+
+                for (auto& ap : appartements) {
+                    if (ap->getId() == choix) {
+                        std::string adresse;
+                        int surface;
+                        int prix;
+                        int nbPieces;
+                        int numEtage;
+                        int numAppartement;
+                        bool ascenseur;
+                        bool balcon;
+                        bool garage;
+                        int idClient;
+
+                        std::cout << "----------------------------------------" << std::endl;
+                        std::cout << "Modification d'un appartement" << std::endl;
+                        std::cout << "----------------------------------------" << std::endl;
+                        
+                        std::cout << "Adresse : ";
+                        std::getline(std::cin >> std::ws, adresse);
+                        ap->setAdresse(adresse);
+
+                        std::cout << "Surface : ";
+                        if (!(std::cin >> surface)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            surface = -1;
+                        }
+                        while (!ap->setSurface(surface)) {
+                            std::cout << "Surface : ";
+                            if (!(std::cin >> surface)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                surface = -1;
+                            }                    
+                        }
+
+                        std::cout << "Prix : ";
+                        if (!(std::cin >> prix)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            prix = -1;
+                        }
+                        while (!ap->setPrix(prix)) {
+                            std::cout << "Prix : ";
+                            if (!(std::cin >> prix)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                prix = -1;
+                            }                    
+                        }
+
+                        std::cout << "Nombre de pieces : ";
+                        if (!(std::cin >> nbPieces)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            nbPieces = -1;
+                        }
+                        while (!ap->setNbPieces(nbPieces)) {
+                            std::cout << "Nombre de pieces : ";
+                            if (!(std::cin >> nbPieces)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                nbPieces = -1;
+                            }                    
+                        }
+
+                        std::cout << "Numero d'etage : ";
+                        if (!(std::cin >> numEtage)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            numEtage = -1;
+                        }
+                        while (!ap->setNumEtage(numEtage)) {
+                            std::cout << "Numero d'etage : ";
+                            if (!(std::cin >> numEtage)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                numEtage = -1;
+                            }                    
+                        }
+
+                        std::cout << "Numero d'appartement : ";
+                        if (!(std::cin >> numAppartement)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            numAppartement = -1;
+                        }
+                        while (!ap->setNumAppartement(numAppartement)) {
+                            std::cout << "Numero d'appartement : ";
+                            if (!(std::cin >> numAppartement)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                numAppartement = -1;
+                            }                    
+                        }
+
+                        std::cout << "Ascenseur (0/1) : ";
+                        if (!(std::cin >> ascenseur)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            ascenseur = -1;
+                        }
+
+                        while (!ap->setAscenseur(ascenseur)) {
+                            std::cout << "Ascenseur (0/1) : ";
+                            if (!(std::cin >> ascenseur)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                ascenseur = -1;
+                            }                    
+                        }
+
+                        std::cout << "Balcon (0/1) : ";
+                        if (!(std::cin >> balcon)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            balcon = -1;
+                        }
+                        while (!ap->setBalcon(balcon)) {
+                            std::cout << "Balcon (0/1) : ";
+                            if (!(std::cin >> balcon)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                balcon = -1;
+                            }                    
+                        }
+
+                        std::cout << "Garage (0/1) : ";
+                        if (!(std::cin >> garage)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            garage = -1;
+                        }
+                        while (!ap->setGarage(garage)) {
+                            std::cout << "Garage (0/1) : ";
+                            if (!(std::cin >> garage)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                garage = -1;
+                            }                    
+                        }
+
+
+
+                        for (auto& c : clients) {
+                            if (c->getId() == ap->getIdClient()) {
+                                c->removeAppartement(ap);
+                                break;
+                            }
+                        }
+
+                        for (auto& c : clients) {
+                            if (c->getId() == idClient) {
+                                c->addAppartement(ap);
+                                break;
+                            }
+                        }
+
+                        ap->setIdClient(idClient);
+                        break;
+                    }
+                }
+            } else if (choix == 3) {
+                for (auto& g : garages) {
+                    g->affiche();
+                }
+                std::cout << "Donnez l'ID du garage a modifier : ";
+                if (!(std::cin >> choix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    choix = -1;
+                }
+
+                for (auto& g : garages) {
+                    if (g->getId() == choix) {
+                        std::string adresse;
+                        int surface;
+                        int prix;
+                        bool ferme;
+                        bool alarme;
+                        bool box;
+                        int idClient;
+
+                        std::cout << "----------------------------------------" << std::endl;
+                        std::cout << "Modification d'un garage" << std::endl;
+                        std::cout << "----------------------------------------" << std::endl;
+                       
+                        std::cout << "Adresse : ";
+                        std::getline(std::cin >> std::ws, adresse);
+                        g->setAdresse(adresse);
+
+                        std::cout << "Surface : ";
+                        if (!(std::cin >> surface)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            surface = -1;
+                        }
+                        while (!g->setSurface(surface)) {
+                            std::cout << "Surface : ";
+                            if (!(std::cin >> surface)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                surface = -1;
+                            }                    
+                        }
+
+                        std::cout << "Prix : ";
+                        if (!(std::cin >> prix)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            prix = -1;
+                        }
+                        while (!g->setPrix(prix)) {
+                            std::cout << "Prix : ";
+                            if (!(std::cin >> prix)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                prix = -1;
+                            }                    
+                        }
+
+                        std::cout << "Ferme (0/1) : ";
+                        if (!(std::cin >> ferme)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            ferme = -1;
+                        }
+                        while (!g->setFerme(ferme)) {
+                            std::cout << "Ferme (0/1) : ";
+                            if (!(std::cin >> ferme)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                ferme = -1;
+                            }                    
+                        }
+
+                        std::cout << "Alarme (0/1) : ";
+                        if (!(std::cin >> alarme)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            alarme = -1;
+                        }
+                        while (!g->setAlarme(alarme)) {
+                            std::cout << "Alarme (0/1) : ";
+                            if (!(std::cin >> alarme)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                alarme = -1;
+                            }                    
+                        }
+
+                        std::cout << "Box (0/1) : ";
+                        if (!(std::cin >> box)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            box = -1;
+                        }
+                        while (!g->setBox(box)) {
+                            std::cout << "Box (0/1) : ";
+                            if (!(std::cin >> box)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                box = -1;
+                            }                    
+                        }
+
+                        std::cout << "ID du client (0 pour enlever le client) : ";
+                        if (!(std::cin >> idClient)) {
+                            std::cin.clear();
+                            std::cin.ignore(1000, '\n');
+                            idClient = -1;
+                        }
+                        while (idClient < 0) {
+                            std::cout << "ID du client (0 pour enlever le client) : ";
+                            if (!(std::cin >> idClient)) {
+                                std::cin.clear();
+                                std::cin.ignore(1000, '\n');
+                                idClient = -1;
+                            }
+                        }
+
+                        for (auto& c : clients) {
+                            if (c->getId() == g->getIdClient()) {
+                                c->removeGarage(g);
+                                break;
+                            }
+                        }
+
+                        for (auto& c : clients) {
+                            if (c->getId() == idClient) {
+                                c->addGarage(g);
+                                break;
+                            }
+                        }
+
+                        g->setIdClient(idClient);
+                        break;
+                    }
+                }
+            } else {
+                std::cout << "Erreur de saisie" << std::endl;
+            }
+
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            getch();
+
+        } else if (choix == 3) { // supprimer un bien
             system("cls");
             supprimerBien();
             if (!(std::cin >> choix)) {
@@ -189,7 +1125,101 @@ int main() {
                 std::cin.ignore(1000, '\n');
                 choix = -1;
             }
-            
+
+            if (choix == 0) {
+                continue;
+            } else if (choix == 1) {
+                for (auto& m : maisons) {
+                    m->affiche();
+                }
+                std::cout << "Donnez l'ID de la maison a supprimer : ";
+                if (!(std::cin >> choix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    choix = -1;
+                }
+
+                if (choix == 0) {
+                    continue;
+                } else if (choix > 0) {
+                    for (auto& m : maisons) {
+                        if (m->getId() == choix) {
+                            maisons.erase(maisons.begin() + i);
+                            break;
+                        }
+                        i++;
+                    }
+                    std::cout << "Maison supprimee" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                } else {
+                    std::cout << "Erreur de saisie" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                }
+            } else if (choix == 2) {
+                for (auto& ap : appartements) {
+                    ap->affiche();
+                }
+                std::cout << "Donnez l'ID de l'appartement a supprimer : ";
+                if (!(std::cin >> choix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    choix = -1;
+                }
+
+                if (choix == 0) {
+                    continue;
+                } else if (choix > 0) {
+                    for (auto& ap : appartements) {
+                        if (ap->getId() == choix) {
+                            appartements.erase(appartements.begin() + i);
+                            break;
+                        }
+                        i++;
+                    }
+                    std::cout << "Appartement supprime" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                } else {
+                    std::cout << "Erreur de saisie" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                }
+            } else if (choix == 3) {
+                for (auto& g : garages) {
+                    g->affiche();
+                }
+                std::cout << "Donnez l'ID du garage a supprimer : ";
+                if (!(std::cin >> choix)) {
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    choix = -1;
+                }
+                if (choix == 0) {
+                    continue;
+                } else if (choix > 0) {
+                    for (auto& g : garages) {
+                        if (g->getId() == choix) {
+                            garages.erase(garages.begin() + i);
+                            break;
+                        }
+                        i++;
+                    }
+                    std::cout << "Garage supprime" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                } else {
+                    std::cout << "Erreur de saisie" << std::endl;
+                    std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                    getch();
+                }
+            } else {
+                std::cout << "Erreur de saisie" << std::endl;
+                
+            }
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            getch();   
         } else if (choix == 4) { // afficher les biens
             system("cls");
             afficherBiens();
@@ -199,16 +1229,241 @@ int main() {
                 choix = -1;
             }
 
+            if (choix == 0) {
+                continue;
+            } else if (choix == 1) {
+                for (auto& m : maisons) {
+                    m->affiche();
+                }
+            } else if (choix == 2) {
+                for (auto& ap : appartements) {
+                    ap->affiche();
+                }
+            } else if (choix == 3) {
+                for (auto& g : garages) {
+                    g->affiche();
+                }
+            } else {
+                std::cout << "Erreur de saisie" << std::endl;
+            }
+            std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+            getch();
+
         } else if (choix == 5) { // ajouter un client
             system("cls");
             // fonction ajout client
+            client *clTMP = new client();
+            std::string civilite;
+            std::string nom;
+            std::string prenom;
+            std::string email;
+            std::string telephone;
+            int jourNaissance;
+            int moisNaissance;
+            int anneeNaissance;
+
+            std::cout << "----------------------------------------" << std::endl;
+            std::cout << "Ajout d'un client" << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            std::cout << "Civilite (M./Mme) : ";
+            if (!(std::cin >> civilite)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                civilite = "";
+            }
+            while (civilite != "M." && civilite != "Mme") {
+                std::cout << "Civilite : ";
+                std::cin >> civilite;
+            }
+            std::cout << "Nom : ";
+            std::getline(std::cin >> std::ws, nom);
+            clTMP->setNom(nom);
+
+            std::cout << "Prenom : ";
+            std::getline(std::cin >> std::ws, prenom);
+            clTMP->setPrenom(prenom);
+
+            std::cout << "Email : ";
+            std::getline(std::cin >> std::ws, email);
+            clTMP->setEmail(email);
+
+            std::cout << "Telephone : ";
+            std::getline(std::cin >> std::ws, telephone);
+            while(clTMP->setTelephone(telephone) == false) {
+                std::cout << "Telephone : ";
+                std::getline(std::cin >> std::ws, telephone);
+            }
+
+            std::cout << "Jour de naissance : ";
+            if (!(std::cin >> jourNaissance)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                jourNaissance = -1;
+            }
+            while (!clTMP->setJourNaissance(jourNaissance)) {
+                std::cout << "Jour de naissance : ";
+                std::cin >> jourNaissance;
+            }
+
+            std::cout << "Mois de naissance : ";
+            if (!(std::cin >> moisNaissance)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                moisNaissance = -1;
+            }
+            while (!clTMP->setMoisNaissance(moisNaissance)) {
+                std::cout << "Mois de naissance : ";
+                std::cin >> moisNaissance;
+            }
+
+            std::cout << "Annee de naissance : ";
+            if (!(std::cin >> anneeNaissance)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                anneeNaissance = -1;
+            }
+            while (!clTMP->setAnneeNaissance(anneeNaissance)) {
+                std::cout << "Annee de naissance : ";
+                std::cin >> anneeNaissance;
+            }
+
+            clients.push_back(clTMP);
 
         } else if (choix == 6) { // modifier un client
             system("cls");
             // fonction modifier client
+            std::cout << "----------------------------------------" << std::endl;
+            std::cout << "Liste des clients" << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            for (auto& c : clients) {
+                std::cout << "ID : " << c->getId() << std::endl;
+                std::cout << c->getCivilite() << " " << c->getNom() << " " << c->getPrenom() << std::endl;
+                std::cout << "----------------------------------------" << std::endl;
+            }
+            std::cout << "Donnez l'ID du client a modifier : ";
+            if (!(std::cin >> choix)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                choix = -1;
+            }
+
+            for (auto& c : clients) {
+                if (c->getId() == choix) {
+                    std::string civilite;
+                    std::string nom;
+                    std::string prenom;
+                    std::string email;
+                    std::string telephone;
+                    int jourNaissance;
+                    int moisNaissance;
+                    int anneeNaissance;
+
+                    std::cout << "----------------------------------------" << std::endl;
+                    std::cout << "Modification d'un client" << std::endl;
+                    std::cout << "----------------------------------------" << std::endl;
+                    std::cout << "Civilite (M./Mme) : ";
+                    if (!(std::cin >> civilite)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        civilite = "";
+                    }
+                    while (civilite != "M." && civilite != "Mme") {
+                        std::cout << "Civilite : ";
+                        std::cin >> civilite;
+                    }
+                    std::cout << "Nom : ";
+                    std::getline(std::cin >> std::ws, nom);
+                    c->setNom(nom);
+                    
+                    std::cout << "Prenom : ";
+                    std::getline(std::cin >> std::ws, prenom);
+                    c->setPrenom(prenom);
+
+                    std::cout << "Email : ";
+                    std::getline(std::cin >> std::ws, email);
+                    c->setEmail(email);
+
+                    std::cout << "Telephone : ";
+                    std::getline(std::cin >> std::ws, telephone);
+                    while(c->setTelephone(telephone) == false) {
+                        std::cout << "Telephone : ";
+                        std::getline(std::cin >> std::ws, telephone);
+                    }
+
+                    std::cout << "Jour de naissance : ";
+                    if (!(std::cin >> jourNaissance)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        jourNaissance = -1;
+                    }
+                    while (!c->setJourNaissance(jourNaissance)) {
+                        std::cout << "Jour de naissance : ";
+                        std::cin >> jourNaissance;
+                    }
+
+                    std::cout << "Mois de naissance : ";
+                    if (!(std::cin >> moisNaissance)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        moisNaissance = -1;
+                    }
+
+                    while (!c->setMoisNaissance(moisNaissance)) {
+                        std::cout << "Mois de naissance : ";
+                        std::cin >> moisNaissance;
+                    }
+
+                    std::cout << "Annee de naissance : ";
+                    if (!(std::cin >> anneeNaissance)) {
+                        std::cin.clear();
+                        std::cin.ignore(1000, '\n');
+                        anneeNaissance = -1;
+                    }
+                    while (!c->setAnneeNaissance(anneeNaissance)) {
+                        std::cout << "Annee de naissance : ";
+                        std::cin >> anneeNaissance;
+                    }
+                    break;
+                }
+            }
+
         } else if (choix == 7) { // supprimer un client
             system("cls");
             // fonction supprimer client
+
+            std::cout << "----------------------------------------" << std::endl;
+            std::cout << "Liste des clients" << std::endl;
+            std::cout << "----------------------------------------" << std::endl;
+            for (auto& c : clients) {
+                std::cout << "ID : " << c->getId() << std::endl;
+                std::cout << c->getCivilite() << " " << c->getNom() << " " << c->getPrenom() << std::endl;
+                std::cout << "----------------------------------------" << std::endl;
+            }
+            std::cout << "Donnez l'ID du client a supprimer : ";
+            if (!(std::cin >> choix)) {
+                std::cin.clear();
+                std::cin.ignore(1000, '\n');
+                choix = -1;
+            }
+
+            if (choix == 0) {
+                continue;
+            } else if (choix > 0) {
+                for (auto& c : clients) {
+                    if (c->getId() == choix) {
+                        clients.erase(clients.begin() + i);
+                        break;
+                    }
+                    i++;
+                }
+                std::cout << "Client supprime" << std::endl;
+                std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                getch();
+            } else {
+                std::cout << "Erreur de saisie" << std::endl;
+                std::cout << "Appuyez sur une touche pour continuer" << std::endl;
+                getch();
+            }
         } else if (choix == 8) { // afficher les clients
             system("cls");
             // fonction afficher clients
@@ -318,8 +1573,8 @@ int main() {
             std::cout << "Appuyez sur une touche pour continuer" << std::endl;
             getch();
 
-        } else if (choix == 0) {
-            // quitter
+        } else if (choix == 0) { // quitter
+            
             system("cls");
             std::cout << "Au revoir !" << std::endl;
             break;

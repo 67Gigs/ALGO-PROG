@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-unsigned int appartement::uniqueID = 0;
+unsigned int appartement::uniqueID = 1;
 
 // Constructeurs
 appartement::appartement() {
@@ -56,46 +56,85 @@ unsigned int appartement::getIdClient() const {
 // Setters
 
 
-void appartement::setNbPieces(int _nbPieces) {
-    nbPieces = _nbPieces;
+bool appartement::setNbPieces(int _nbPieces) {
+    if (_nbPieces < 0) {
+        std::cout << "Le nombre de pieces ne peut pas être négatif" << std::endl;
+        return false;
+    } else {
+        nbPieces = _nbPieces;
+    }
+    return true;
 }
 
-void appartement::setNumEtage(int _numEtage) {
-    numEtage = _numEtage;
+bool appartement::setNumEtage(int _numEtage) {
+    if (_numEtage < 0) {
+        std::cout << "Le nombre d'étages ne peut pas être négatif" << std::endl;
+        return false;
+    } else {
+        numEtage = _numEtage;
+    }
+    return true;
 }
 
-void appartement::setNumAppartement(int _numAppartement) {
-    numAppartement = _numAppartement;
+bool appartement::setNumAppartement(int _numAppartement) {
+    if (_numAppartement < 0) {
+        std::cout << "Le nombre d'appartement ne peut pas être négatif" << std::endl;
+        return false;
+    } else {
+        numAppartement = _numAppartement;
+    }
+    return true;
 }
 
-void appartement::setAscenseur(bool _ascenseur) {
-    ascenseur = _ascenseur;
+bool appartement::setAscenseur(bool _ascenseur) {
+    if (ascenseur = _ascenseur) {
+        return true;
+    } else {
+        std::cout << "L'ascenseur doit être un booleen" << std::endl;
+        return false;
+    }
 }
 
-void appartement::setBalcon(bool _balcon) {
-    balcon = _balcon;
+bool appartement::setBalcon(bool _balcon) {
+    if (balcon = _balcon) {
+        return true;
+    } else {
+        std::cout << "Le balcon doit être un booleen" << std::endl;
+        return false;
+    }
 }
 
 
-void appartement::setGarage(bool _garage) {
-    garage = _garage;
+bool appartement::setGarage(bool _garage) {
+    if (garage = _garage) {
+        return true;
+    } else {
+        std::cout << "Le garage doit être un booleen" << std::endl;
+        return false;
+    }
 }
 
-void appartement::setIdClient(unsigned int _idClient) {
-    idClient = _idClient;
+bool appartement::setIdClient(unsigned int _idClient) {
+    if (_idClient >= 0) {
+        idClient = _idClient;
+        return true;
+    } else {
+        std::cout << "L'id du client doit être supérieur à 0" << std::endl;
+        return false;
+    }
 }
 
 // Methodes
 void appartement::affiche() {
-    std::cout << "Appartement " << id << " : " << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+    std::cout << "ID : " << id << std::endl;
     std::cout << "Adresse : " << adresse << std::endl;
-    std::cout << "Surface : " << surface << " m²" << std::endl;
-    std::cout << "Prix : " << prix << " €" << std::endl;
-    std::cout << "Nombre de pièces : " << nbPieces << std::endl;
-    std::cout << "Numéro d'étage : " << numEtage << std::endl;
-    std::cout << "Numéro d'appartement : " << numAppartement << std::endl;
-    std::cout << "Ascenseur : " << (ascenseur ? "oui" : "non") << std::endl;
-    std::cout << "Balcon : " << (balcon ? "oui" : "non") << std::endl;
-    std::cout << "Garage : " << (garage ? "oui" : "non") << std::endl;
-    std::cout << std::endl;
+    std::cout << "Surface : " << surface << std::endl;
+    std::cout << "Prix : " << prix << std::endl;
+    std::cout << "Nombres de pieces : " << nbPieces << std::endl;
+    std::cout << "Balcon : " << balcon << std::endl;
+    std::cout << "Garage : " << garage << std::endl;
+    std::cout << "Ascenseur : " << ascenseur << std::endl;
+    std::cout << "ID Client : " << idClient << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 }

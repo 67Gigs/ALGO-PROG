@@ -68,81 +68,100 @@ date client::getNaissance() const {
 
 // Setters
 
-void client::setNom(std::string _nom) {
+bool client::setNom(std::string _nom) {
     if (_nom == "") {
         std::cout << "Le nom ne peut pas être vide" << std::endl;
+        return false;
     } else {
         nom = _nom;
+        return true;
     }
 }
 
-void client::setPrenom(std::string _prenom) {
+bool client::setPrenom(std::string _prenom) {
     if (_prenom == "") {
         std::cout << "Le prenom ne peut pas être vide" << std::endl;
+        return false;
     } else {
         prenom = _prenom;
+        return true;
     }
 }
 
-void client::setCivilite(std::string _civilite) {
+bool client::setCivilite(std::string _civilite) {
     if (_civilite == "") {
         std::cout << "La civilité ne peut pas être vide" << std::endl;
+        return false;
     } else {
         civilite = _civilite;
+        return true;
     }
 }
 
-void client::setEmail(std::string _email) {
+bool client::setEmail(std::string _email) {
     if (_email == "") {
         std::cout << "L'email ne peut pas être vide" << std::endl;
+        return false;
     } else {
         email = _email;
+        return true;
     }
 }
 
-void client::setTelephone(std::string _telephone) {
+bool client::setTelephone(std::string _telephone) {
     if (_telephone == "") {
         std::cout << "Le telephone ne peut pas être vide" << std::endl;
+        return false;
     } else if (_telephone.length() != 14) {
         std::cout << "Le telephone doit être au format +33 x xx xx xx xx" << std::endl;
+        return false;
     } else {
         telephone = _telephone;
+        return true;
     }
 }
 
-void client::setId(unsigned int _id) {
+bool client::setId(unsigned int _id) {
     id = _id;
 }
 
-void client::setSolde(double _solde) {
+bool client::setSolde(double _solde) {
     if (_solde < 0) {
         std::cout << "Le solde ne peut pas être négatif" << std::endl;
+        return false;
     } else {
         solde = _solde;
+        return true;
     }
 }
 
-void client::setJourNaissance(int jour) {
+bool client::setJourNaissance(int jour) {
     if (jour < 1 || jour > 31) {
         std::cout << "Le jour doit être compris entre 1 et 31" << std::endl;
+        return false;
     } else {
         naissance.jour = jour;
+        return true;
     }
 }
 
-void client::setMoisNaissance(int mois) {
+bool client::setMoisNaissance(int mois) {
     if (mois < 1 || mois > 12) {
         std::cout << "Le mois doit être compris entre 1 et 12" << std::endl;
+        return false;
     } else {
         naissance.mois = mois;
+        return true;
     }
 }
 
-void client::setAnneeNaissance(int annee) {
+bool client::setAnneeNaissance(int annee) {
     if (annee > 2004) {
         std::cout << "Le.a client.e doit etre majeur.e" << std::endl;
+        return false;
     } else {
         naissance.annee = annee;
+        return true;
     }
 }
 

@@ -46,16 +46,16 @@ public:
     date getNaissance() const;
 
     // setters
-    void setNom(std::string nom);
-    void setPrenom(std::string prenom);
-    void setCivilite(std::string civilite);
-    void setEmail(std::string email);
-    void setTelephone(std::string telephone);
-    void setId(unsigned int id);
-    void setSolde(double solde);
-    void setJourNaissance(int jour);
-    void setMoisNaissance(int mois);
-    void setAnneeNaissance(int annee);
+    bool setNom(std::string nom);
+    bool setPrenom(std::string prenom);
+    bool setCivilite(std::string civilite);
+    bool setEmail(std::string email);
+    bool setTelephone(std::string telephone);
+    bool setId(unsigned int id);
+    bool setSolde(double solde);
+    bool setJourNaissance(int jour);
+    bool setMoisNaissance(int mois);
+    bool setAnneeNaissance(int annee);
 
     // methodes
     void addMaison(maison *maison);

@@ -32,13 +32,13 @@ public:
     unsigned int getIdClient() const;
 
     // Setters
-    void setNumEtage(int numEtage);
-    void setNumAppartement(int numAppartement);
-    void setAscenseur(bool ascenseur);
-    void setNbPieces(int nbPieces);
-    void setGarage(bool garage);
-    void setBalcon(bool balcon);
-    void setIdClient(unsigned int idClient);
+    bool setNumEtage(int numEtage);
+    bool setNumAppartement(int numAppartement);
+    bool setAscenseur(bool ascenseur);
+    bool setNbPieces(int nbPieces);
+    bool setGarage(bool garage);
+    bool setBalcon(bool balcon);
+    bool setIdClient(unsigned int idClient);
 
     // methodes
     void affiche();

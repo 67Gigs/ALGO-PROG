@@ -32,12 +32,14 @@ public:
     unsigned int getIdClient() const;
 
     // setters
-    void setNbPieces(int nbPieces);
-    void setGarage(bool garage);
-    void setJardin(bool jardin);
-    void setPiscine(bool piscine);
-    void setCave(bool cave);
-    void setIdClient(unsigned int idClient);
+    bool setNbPieces(int nbPieces);
+    bool setGarage(bool garage);
+    bool setJardin(bool jardin);
+    bool setPiscine(bool piscine);
+    bool setCave(bool cave);
+    bool setIdClient(unsigned int idClient);
+    
+    // autres methodes
     void affiche();
 };
 

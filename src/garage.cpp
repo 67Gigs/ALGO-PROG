@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-unsigned int garage::uniqueID = 0;
+unsigned int garage::uniqueID = 1;
 
 // Constructeurs
 garage::garage() {
@@ -47,37 +47,63 @@ unsigned int garage::getIdClient() const {
 
 // Setters
 
-void garage::setNbPlaces(int _numPlace) {
+bool garage::setNbPlaces(int _numPlace) {
     if (_numPlace < 0) {
         std::cout << "Le nombre de places ne peut pas être négatif" << std::endl;
+        return false;
     } else {
         numPlace = _numPlace;
     }
+    return true;
 }
 
-void garage::setFerme(bool _ferme) {
-    ferme = _ferme;
+bool garage::setFerme(bool _ferme) {
+    if (ferme = _ferme) {
+        return true;
+    } else {
+        std::cout << "Le garage doit avoir la valeur 0 ou 1 " << std::endl;
+        return false;
+    }
 }
 
-void garage::setAlarme(bool _alarme) {
-    alarme = _alarme;
+bool garage::setAlarme(bool _alarme) {
+    if (alarme = _alarme) {
+        return true;
+    } else {
+        std::cout << "L'alarme doit avoir la valeur 0 ou 1 " << std::endl;
+        return false;
+    }
 }
 
-void garage::setBox(bool _box) {
-    box = _box;
+bool garage::setBox(bool _box) {
+    if (box = _box) {
+        return true;
+    } else {
+        std::cout << "Le box doit avoir la valeur 0 ou 1 " << std::endl;
+        return false;
+    }
 }
 
-void garage::setIdClient(unsigned int _idClient) {
-    idClient = _idClient;
+bool garage::setIdClient(unsigned int _idClient) {
+    if (_idClient < 0) {
+        std::cout << "L'ID du client ne peut pas être négatif" << std::endl;
+        return false;
+    } else {
+        idClient = _idClient;
+    }
+    return true;
 }
 
 void garage::affiche() {
-    std::cout << "Garage n°" << id << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+    std::cout << "ID : " << id << std::endl;
     std::cout << "Adresse : " << adresse << std::endl;
-    std::cout << "Surface : " << surface << " m²" << std::endl;
-    std::cout << "Prix : " << prix << " €" << std::endl;
+    std::cout << "Surface : " << surface << std::endl;
+    std::cout << "Prix : " << prix << std::endl;
     std::cout << "Nombre de places : " << numPlace << std::endl;
-    std::cout << "Fermé : " << ferme << std::endl;
+    std::cout << "Ferme : " << ferme << std::endl;
     std::cout << "Alarme : " << alarme << std::endl;
     std::cout << "Box : " << box << std::endl;
+    std::cout << "ID Client : " << idClient << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
 }

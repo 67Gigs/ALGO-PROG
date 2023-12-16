@@ -29,11 +29,11 @@ public:
     unsigned int getIdClient() const;
 
     // setters
-    void setNbPlaces(int nbPlaces);
-    void setFerme(bool ferme);
-    void setAlarme(bool alarme);
-    void setBox(bool box);
-    void setIdClient(unsigned int idClient);
+    bool setNbPlaces(int nbPlaces);
+    bool setFerme(bool ferme);
+    bool setAlarme(bool alarme);
+    bool setBox(bool box);
+    bool setIdClient(unsigned int idClient);
 
     // methodes
     void affiche();

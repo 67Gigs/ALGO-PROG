@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-unsigned int bien::uniqueID = 0;
+unsigned int bien::uniqueID = 1;
 
 
 // Constructeurs
@@ -37,28 +37,34 @@ unsigned int bien::getId() const {
 
 // Setters
 
-void bien::setAdresse(std::string _adresse) {
+bool bien::setAdresse(std::string _adresse) {
     if (_adresse == "") {
         std::cout << "L'adresse ne peut pas être vide" << std::endl;
+        return false;
     } else {
         adresse = _adresse;
+        return true;
     }
 }
 
-void bien::setSurface(int _surface) {
+bool bien::setSurface(int _surface) {
     if (_surface < 0) {
         std::cout << "La surface ne peut pas être négative" << std::endl;
+        return false;
     } else {
         surface = _surface;
     }
+    return true;
 }
 
-void bien::setPrix(double _prix) {
+bool bien::setPrix(double _prix) {
     if (_prix < 0) {
         std::cout << "Le prix ne peut pas être négatif" << std::endl;
+        return false;
     } else {
         prix = _prix;
     }
+    return true;
 }
 
 

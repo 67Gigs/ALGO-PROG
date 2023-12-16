@@ -26,9 +26,11 @@ public:
     unsigned int getId() const;
 
     // Setters
-    void setAdresse(std::string adresse);
-    void setSurface(int surface);
-    void setPrix(double prix);
+    bool setAdresse(std::string adresse);
+    bool setSurface(int surface);
+    bool setPrix(double prix);
+    
+    // autres methodes
     virtual void affiche();
 };
 
