@@ -8,5 +8,4 @@ date::date() {
 }
 
 date::~date() {
-    std::cout << "date detruite" << std::endl;
 }

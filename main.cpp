@@ -178,7 +178,7 @@ int main() {
                 std::cin.ignore(1000, '\n');
                 choix = -1;
             }
-
+            system("cls");
             if (choix == 0) {
                 continue;
             } else if (choix == 1) {
@@ -245,14 +245,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Garage (0/1) : ";
+                std::cout << "Garage (false/true) : ";
                 if (!(std::cin >> garage)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     garage = -1;
                 }
                 while (!ma->setGarage(garage)) {
-                    std::cout << "Garage (0/1) : ";
+                    std::cout << "Garage (false/true) : ";
                     if (!(std::cin >> garage)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -260,14 +260,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Jardin (0/1) : ";
+                std::cout << "Jardin (false/true) : ";
                 if (!(std::cin >> jardin)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     jardin = -1;
                 }
                 while (!ma->setJardin(jardin)) {
-                    std::cout << "Jardin (0/1) : ";
+                    std::cout << "Jardin (false/true) : ";
                     if (!(std::cin >> jardin)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -275,14 +275,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Piscine (0/1) : ";
+                std::cout << "Piscine (false/true) : ";
                 if (!(std::cin >> piscine)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     piscine = -1;
                 }
                 while (!ma->setPiscine(piscine)) {
-                    std::cout << "Piscine (0/1) : ";
+                    std::cout << "Piscine (false/true) : ";
                     if (!(std::cin >> piscine)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -290,14 +290,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Cave (0/1) : ";
+                std::cout << "Cave (false/true) : ";
                 if (!(std::cin >> cave)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     cave = -1;
                 }
                 while (!ma->setCave(cave)) {
-                    std::cout << "Cave (0/1) : ";
+                    std::cout << "Cave (false/true) : ";
                     if (!(std::cin >> cave)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -428,14 +428,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Ascenseur (0/1) : ";
+                std::cout << "Ascenseur (false/true) : ";
                 if (!(std::cin >> ascenseur)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     ascenseur = -1;
                 }
                 while (!ap->setAscenseur(ascenseur)) {
-                    std::cout << "Ascenseur (0/1) : ";
+                    std::cout << "Ascenseur (false/true) : ";
                     if (!(std::cin >> ascenseur)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -443,14 +443,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Balcon (0/1) : ";
+                std::cout << "Balcon (false/true) : ";
                 if (!(std::cin >> balcon)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     balcon = -1;
                 }
                 while (!ap->setBalcon(balcon)) {
-                    std::cout << "Balcon (0/1) : ";
+                    std::cout << "Balcon (false/true) : ";
                     if (!(std::cin >> balcon)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -458,14 +458,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Garage (0/1) : ";
+                std::cout << "Garage (false/true) : ";
                 if (!(std::cin >> garage)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     garage = -1;
                 }
                 while (!ap->setGarage(garage)) {
-                    std::cout << "Garage (0/1) : ";
+                    std::cout << "Garage (false/true) : ";
                     if (!(std::cin >> garage)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -549,14 +549,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Ferme (0/1) : ";
+                std::cout << "Ferme (false/true) : ";
                 if (!(std::cin >> ferme)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     ferme = -1;
                 }
                 while (!ga->setFerme(ferme)) {
-                    std::cout << "Ferme (0/1) : ";
+                    std::cout << "Ferme (false/true) : ";
                     if (!(std::cin >> ferme)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -564,14 +564,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Alarme (0/1) : ";
+                std::cout << "Alarme (false/true) : ";
                 if (!(std::cin >> alarme)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     alarme = -1;
                 }
                 while (!ga->setAlarme(alarme)) {
-                    std::cout << "Alarme (0/1) : ";
+                    std::cout << "Alarme (false/true) : ";
                     if (!(std::cin >> alarme)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -579,14 +579,14 @@ int main() {
                     }                    
                 }
 
-                std::cout << "Box (0/1) : ";
+                std::cout << "Box (false/true) : ";
                 if (!(std::cin >> box)) {
                     std::cin.clear();
                     std::cin.ignore(1000, '\n');
                     box = -1;
                 }
                 while (!ga->setBox(box)) {
-                    std::cout << "Box (0/1) : ";
+                    std::cout << "Box (false/true) : ";
                     if (!(std::cin >> box)) {
                         std::cin.clear();
                         std::cin.ignore(1000, '\n');
@@ -637,7 +637,7 @@ int main() {
                 std::cin.ignore(1000, '\n');
                 choix = -1;
             }
-
+            system("cls");
             if (choix == 0) {
                 continue;
             } else if (choix == 1) {
@@ -717,14 +717,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Garage (0/1) : ";
+                        std::cout << "Garage (false/true) : ";
                         if (!(std::cin >> garage)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             garage = -1;
                         }
                         while (!m->setGarage(garage)) {
-                            std::cout << "Garage (0/1) : ";
+                            std::cout << "Garage (false/true) : ";
                             if (!(std::cin >> garage)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -732,14 +732,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Jardin (0/1) : ";
+                        std::cout << "Jardin (false/true) : ";
                         if (!(std::cin >> jardin)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             jardin = -1;
                         }
                         while (!m->setJardin(jardin)) {
-                            std::cout << "Jardin (0/1) : ";
+                            std::cout << "Jardin (false/true) : ";
                             if (!(std::cin >> jardin)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -747,14 +747,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Piscine (0/1) : ";
+                        std::cout << "Piscine (false/true) : ";
                         if (!(std::cin >> piscine)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             piscine = -1;
                         }
                         while (!m->setPiscine(piscine)) {
-                            std::cout << "Piscine (0/1) : ";
+                            std::cout << "Piscine (false/true) : ";
                             if (!(std::cin >> piscine)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -762,14 +762,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Cave (0/1) : ";
+                        std::cout << "Cave (false/true) : ";
                         if (!(std::cin >> cave)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             cave = -1;
                         }
                         while (!m->setCave(cave)) {
-                            std::cout << "Cave (0/1) : ";
+                            std::cout << "Cave (false/true) : ";
                             if (!(std::cin >> cave)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -918,7 +918,7 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Ascenseur (0/1) : ";
+                        std::cout << "Ascenseur (false/true) : ";
                         if (!(std::cin >> ascenseur)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
@@ -926,7 +926,7 @@ int main() {
                         }
 
                         while (!ap->setAscenseur(ascenseur)) {
-                            std::cout << "Ascenseur (0/1) : ";
+                            std::cout << "Ascenseur (false/true) : ";
                             if (!(std::cin >> ascenseur)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -934,14 +934,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Balcon (0/1) : ";
+                        std::cout << "Balcon (false/true) : ";
                         if (!(std::cin >> balcon)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             balcon = -1;
                         }
                         while (!ap->setBalcon(balcon)) {
-                            std::cout << "Balcon (0/1) : ";
+                            std::cout << "Balcon (false/true) : ";
                             if (!(std::cin >> balcon)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -949,14 +949,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Garage (0/1) : ";
+                        std::cout << "Garage (false/true) : ";
                         if (!(std::cin >> garage)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             garage = -1;
                         }
                         while (!ap->setGarage(garage)) {
-                            std::cout << "Garage (0/1) : ";
+                            std::cout << "Garage (false/true) : ";
                             if (!(std::cin >> garage)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -1043,14 +1043,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Ferme (0/1) : ";
+                        std::cout << "Ferme (false/true) : ";
                         if (!(std::cin >> ferme)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             ferme = -1;
                         }
                         while (!g->setFerme(ferme)) {
-                            std::cout << "Ferme (0/1) : ";
+                            std::cout << "Ferme (false/true) : ";
                             if (!(std::cin >> ferme)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -1058,14 +1058,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Alarme (0/1) : ";
+                        std::cout << "Alarme (false/true) : ";
                         if (!(std::cin >> alarme)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             alarme = -1;
                         }
                         while (!g->setAlarme(alarme)) {
-                            std::cout << "Alarme (0/1) : ";
+                            std::cout << "Alarme (false/true) : ";
                             if (!(std::cin >> alarme)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -1073,14 +1073,14 @@ int main() {
                             }                    
                         }
 
-                        std::cout << "Box (0/1) : ";
+                        std::cout << "Box (false/true) : ";
                         if (!(std::cin >> box)) {
                             std::cin.clear();
                             std::cin.ignore(1000, '\n');
                             box = -1;
                         }
                         while (!g->setBox(box)) {
-                            std::cout << "Box (0/1) : ";
+                            std::cout << "Box (false/true) : ";
                             if (!(std::cin >> box)) {
                                 std::cin.clear();
                                 std::cin.ignore(1000, '\n');
@@ -1136,7 +1136,7 @@ int main() {
                 std::cin.ignore(1000, '\n');
                 choix = -1;
             }
-
+            system("cls");
             if (choix == 0) {
                 continue;
             } else if (choix == 1) {
@@ -1239,7 +1239,7 @@ int main() {
                 std::cin.ignore(1000, '\n');
                 choix = -1;
             }
-
+            system("cls");
             if (choix == 0) {
                 continue;
             } else if (choix == 1) {
