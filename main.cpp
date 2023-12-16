@@ -57,21 +57,22 @@ int main() {
     }
 
     // stockage des données dans les vecteurs
-
+    i = 0;
     for (auto& c : jsonClient) {
         client *cl = new client();
-        cl->setNom(c["nom"]);
-        cl->setPrenom(c["prenom"]);
-        cl->setCivilite(c["civilite"]);
-        cl->setEmail(c["email"]);
-        cl->setTelephone(c["telephone"]);
-        cl->setId(c["id"]);
-        cl->setSolde(c["solde"]);
-        cl->setJourNaissance(c["jourNaissance"]);
-        cl->setMoisNaissance(c["moisNaissance"]);
-        cl->setAnneeNaissance(c["anneeNaissance"]);
+        cl->setNom(c[i]["nom"]);
+        cl->setPrenom(c[i]["prenom"]);
+        cl->setCivilite(c[i]["civilite"]);
+        cl->setEmail(c[i]["email"]);
+        cl->setTelephone(c[i]["telephone"]);
+        cl->setId(c[i]["id"]);
+        cl->setSolde(c[i]["solde"]);
+        cl->setJourNaissance(c[i]["jourNaissance"]);
+        cl->setMoisNaissance(c[i]["moisNaissance"]);
+        cl->setAnneeNaissance(c[i]["anneeNaissance"]);
         clients.push_back(cl);
         std::cout << "Client " << cl->getNom() << " " << cl->getPrenom() << " ajouté" << std::endl;
+        i++;
     }
 
     for (size_t i = 0; i < clients.size(); i++) {
@@ -82,68 +83,76 @@ int main() {
 
     client::uniqueID = maxId + 1;
 
+    i = 0;
     for (auto& m : jsonMaison) {
         maison *ma = new maison();
-        ma->setAdresse(m["adresse"]);
-        ma->setSurface(m["surface"]);
-        ma->setPrix(m["prix"]);
-        ma->setNbPieces(m["nbPieces"]);
-        ma->setGarage(m["garage"]);
-        ma->setJardin(m["jardin"]);
-        ma->setPiscine(m["piscine"]);
-        ma->setCave(m["cave"]);
+        ma->setAdresse(m[i]["adresse"]);
+        ma->setSurface(m[i]["surface"]);
+        ma->setPrix(m[i]["prix"]);
+        ma->setNbPieces(m[i]["nbPieces"]);
+        ma->setGarage(m[i]["garage"]);
+        ma->setJardin(m[i]["jardin"]);
+        ma->setPiscine(m[i]["piscine"]);
+        ma->setCave(m[i]["cave"]);
         for (auto& c : clients) {
             if (ma->getIdClient() == 0) {
                 break;
             }
-            if (c->getId() == m["idClient"]) {
+            if (c->getId() == m[i]["idClient"]) {
                 c->addMaison(ma);
                 break;
             }
         }
+        i++;
         maisons.push_back(ma);
     }
 
+    i = 0;
     for (auto& a : jsonAppartement) {
         appartement *ap = new appartement();
-        ap->setAdresse(a["adresse"]);
-        ap->setSurface(a["surface"]);
-        ap->setPrix(a["prix"]);
-        ap->setNbPieces(a["nbPieces"]);
-        ap->setNumEtage(a["numEtage"]);
-        ap->setNumAppartement(a["numAppartement"]);
-        ap->setAscenseur(a["ascenseur"]);
-        ap->setBalcon(a["balcon"]);
-        ap->setGarage(a["garage"]);
+        ap->setAdresse(a[i]["adresse"]);
+        ap->setSurface(a[i]["surface"]);
+        ap->setPrix(a[i]["prix"]);
+        ap->setNbPieces(a[i]["nbPieces"]);
+        ap->setNumEtage(a[i]["numEtage"]);
+        ap->setNumAppartement(a[i]["numAppartement"]);
+        ap->setAscenseur(a[i]["ascenseur"]);
+        ap->setBalcon(a[i]["balcon"]);
+        ap->setGarage(a[i]["garage"]);
         for (auto& c : clients) {
             if (ap->getIdClient() == 0) {
                 break;
             }
-            if (c->getId() == a["idClient"]) {
+            if (c->getId() == a[i]["idClient"]) {
                 c->addAppartement(ap);
                 break;
             }
         }
+
+        i++;
         appartements.push_back(ap);
     }
 
+    i = 0;
     for (auto& g : jsonGarage) {
         garage *ga = new garage();
-        ga->setAdresse(g["adresse"]);
-        ga->setSurface(g["surface"]);
-        ga->setPrix(g["prix"]);
-        ga->setFerme(g["ferme"]);
-        ga->setAlarme(g["alarme"]);
-        ga->setBox(g["box"]);
+        ga->setAdresse(g[i]["adresse"]);
+        ga->setSurface(g[i]["surface"]);
+        ga->setPrix(g[i]["prix"]);
+        ga->setFerme(g[i]["ferme"]);
+        ga->setAlarme(g[i]["alarme"]);
+        ga->setBox(g[i]["box"]);
         for (auto& c : clients) {
             if (ga->getIdClient() == 0) {
                 break;
             }
-            if (c->getId() == g["idClient"]) {
+            if (c->getId() == g[i]["idClient"]) {
                 c->addGarage(ga);
                 break;
             }
         }
+        
+        i++;
         garages.push_back(ga);
     }
 
