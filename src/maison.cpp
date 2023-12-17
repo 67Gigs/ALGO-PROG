@@ -119,9 +119,25 @@ void maison::affiche() {
     std::cout << "Surface : " << surface << std::endl;
     std::cout << "Prix : " << prix << std::endl;
     std::cout << "Nombre de pieces : " << nbPieces << std::endl;
-    std::cout << "Garage : " << garage << std::endl;
-    std::cout << "Jardin : " << jardin << std::endl;
-    std::cout << "Piscine : " << piscine << std::endl;
-    std::cout << "Cave : " << cave << std::endl;
+    if (garage) {
+        std::cout << "Garage : Oui" << std::endl;
+    } else {
+        std::cout << "Garage : Non" << std::endl;
+    }
+    if (jardin) {
+        std::cout << "Jardin : Oui" << std::endl;
+    } else {
+        std::cout << "Jardin : Non" << std::endl;
+    }
+    if (piscine) {
+        std::cout << "Piscine : Oui" << std::endl;
+    } else {
+        std::cout << "Piscine : Non" << std::endl;
+    }
+    if (cave) {
+        std::cout << "Cave : Oui" << std::endl;
+    } else {
+        std::cout << "Cave : Non" << std::endl;
+    }
     std::cout << "----------------------------------------" << std::endl;
 }

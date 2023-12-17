@@ -101,9 +101,21 @@ void garage::affiche() {
     std::cout << "Surface : " << surface << std::endl;
     std::cout << "Prix : " << prix << std::endl;
     std::cout << "Nombre de places : " << numPlace << std::endl;
-    std::cout << "Ferme : " << ferme << std::endl;
-    std::cout << "Alarme : " << alarme << std::endl;
-    std::cout << "Box : " << box << std::endl;
+    if (ferme) {
+        std::cout << "Ferme : Oui" << std::endl;
+    } else {
+        std::cout << "Ferme : Non" << std::endl;
+    }    
+    if (alarme) {
+        std::cout << "Alarme : Oui" << std::endl;
+    } else {
+        std::cout << "Alarme : Non" << std::endl;
+    }
+    if (box) {
+        std::cout << "Box : Oui" << std::endl;
+    } else {
+        std::cout << "Box : Non" << std::endl;
+    }
     std::cout << "ID Client : " << idClient << std::endl;
     std::cout << "----------------------------------------" << std::endl;
 }

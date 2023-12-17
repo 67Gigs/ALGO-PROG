@@ -132,9 +132,21 @@ void appartement::affiche() {
     std::cout << "Surface : " << surface << std::endl;
     std::cout << "Prix : " << prix << std::endl;
     std::cout << "Nombres de pieces : " << nbPieces << std::endl;
-    std::cout << "Balcon : " << balcon << std::endl;
-    std::cout << "Garage : " << garage << std::endl;
-    std::cout << "Ascenseur : " << ascenseur << std::endl;
+    if (balcon) {
+        std::cout << "Balcon : Oui" << std::endl;
+    } else {
+        std::cout << "Balcon : Non" << std::endl;
+    }
+    if (garage) {
+        std::cout << "Garage : Oui" << std::endl;
+    } else {
+        std::cout << "Garage : Non" << std::endl;
+    }
+    if (ascenseur) {
+        std::cout << "Ascenseur : Oui" << std::endl;
+    } else {
+        std::cout << "Ascenseur : Non" << std::endl;
+    }
     std::cout << "ID Client : " << idClient << std::endl;
     std::cout << "----------------------------------------" << std::endl;
 }
