@@ -139,5 +139,6 @@ void maison::affiche() {
     } else {
         std::cout << "Cave : Non" << std::endl;
     }
+    std::cout << "ID du client : " << idClient << std::endl;
     std::cout << "----------------------------------------" << std::endl;
 }

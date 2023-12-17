@@ -1297,17 +1297,24 @@ int main() {
             std::cout << "Prenom : ";
             std::getline(std::cin >> std::ws, prenom);
 
+            clTMP->setNom(nom);
+            clTMP->setPrenom(prenom);
+
             for (auto& c : clients) {
-                if (c == clTMP) {
+                if (c->getNom() == nom && c->getPrenom() == prenom) {
                     std::cout << "Client deja existant" << std::endl;
                     std::cout << "Appuyez sur une touche pour continuer" << std::endl;
                     getch();
+                    choix = -1;
                     break;
                 }
             }
 
-            clTMP->setNom(nom);
-            clTMP->setPrenom(prenom);
+            if (choix == -1) {
+                continue;
+            }
+
+            
 
             std::cout << "Email : ";
             std::getline(std::cin >> std::ws, email);
